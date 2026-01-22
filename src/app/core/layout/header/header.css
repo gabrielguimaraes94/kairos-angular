@@ -58,3 +58,50 @@
     display: none; /* depois podemos fazer menu mobile */
   }
 }
+/* Hamburger button */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 28px;
+  cursor: pointer;
+  color: #0f172a;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+  flex-direction: column;
+  background: #ffffff;
+  border-top: 1px solid #e5e7eb;
+}
+
+.mobile-menu a {
+  padding: 14px 20px;
+  text-decoration: none;
+  color: #0f172a;
+  font-weight: 600;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-menu.open {
+  display: flex;
+}
+
+/* Mobile rules */
+@media (max-width: 860px) {
+  .desktop-menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* Desktop rules */
+@media (min-width: 861px) {
+  .mobile-menu {
+    display: none !important;
+  }
+}
