@@ -1,6 +1,7 @@
 <section class="page">
   <div class="page-container">
 
+    <!-- HEADER -->
     <div class="header-row">
       <div>
         <div class="kicker">KAIROS • KAIROSLINGO</div>
@@ -9,23 +10,34 @@
           Choose your digitization challenge and validate your daily knowledge.
         </p>
       </div>
+    </div>
 
-      <div class="stats" *ngIf="step !== 'select'">
-        <div class="stat">
-          <div class="label">Quiz</div>
-          <div class="value">{{ currentQuizTitle }}</div>
+    <!-- GAME STATS (DUOLINGO STYLE) -->
+    <div class="game-stats" *ngIf="step !== 'select'">
+      <div class="game-card">
+        <div class="label">Quiz</div>
+        <div class="value">{{ currentQuizTitle }}</div>
+      </div>
+
+      <div class="game-card">
+        <div class="label">Progress</div>
+        <div class="value">{{ progressLabel }}</div>
+      </div>
+
+      <div class="game-card xp">
+        <div class="label">XP</div>
+        <div class="value">
+          {{ xp }}
+          <span class="xp-pop" *ngIf="showXpPop">+{{ xpPopValue }}</span>
         </div>
-        <div class="stat">
-          <div class="label">Progress</div>
-          <div class="value">{{ progressLabel }}</div>
-        </div>
-        <div class="stat xp">
-          <div class="label">XP</div>
-          <div class="value">
-            {{ xp }}
-            <span class="xp-pop" *ngIf="showXpPop">+{{ xpPopValue }}</span>
-          </div>
-        </div>
+      </div>
+    </div>
+
+    <!-- PROGRESS BAR -->
+    <div class="progress-bar" *ngIf="step === 'quiz'">
+      <div
+        class="progress-fill"
+        [style.width.%]="((currentIndex + 1) / questions.length) * 100">
       </div>
     </div>
 
@@ -50,7 +62,9 @@
     <div class="quiz-card" *ngIf="step === 'quiz' && currentQuestion">
       <div class="quiz-top">
         <div class="badges">
-          <span class="badge">{{ level === 'basic' ? 'Basic' : 'Intermediate' }}</span>
+          <span class="badge">
+            {{ level === 'basic' ? 'Basic' : 'Intermediate' }}
+          </span>
           <span class="badge topic">{{ currentQuestion.topic }}</span>
         </div>
 
@@ -75,9 +89,13 @@
       </div>
 
       <div class="feedback" *ngIf="selectedOption">
-        <div class="fb correct" *ngIf="isCorrect">Correct. +XP</div>
+        <div class="fb correct" *ngIf="isCorrect">
+          Correct 🎉 +{{ xpPopValue }} XP
+        </div>
+
         <div class="fb wrong" *ngIf="isCorrect === false">
-          Not quite. Correct answer: <strong>{{ currentQuestion.correct }}</strong>
+          Not quite. Correct answer:
+          <strong>{{ currentQuestion.correct }}</strong>
         </div>
 
         <div class="actions">
@@ -101,12 +119,16 @@
 
         <div class="score">
           <div class="big">{{ score }}/{{ questions.length }}</div>
-          <div class="small">Score • XP earned: {{ xp }}</div>
+          <div class="small">XP earned: {{ xp }}</div>
         </div>
 
         <div class="result-actions">
-          <button class="btn ghost" (click)="backToSelect()">Pick another level</button>
-          <button class="btn primary" (click)="restartSameLevel()">Retry this quiz</button>
+          <button class="btn ghost" (click)="backToSelect()">
+            Pick another level
+          </button>
+          <button class="btn primary" (click)="restartSameLevel()">
+            Retry this quiz
+          </button>
         </div>
       </div>
     </div>
