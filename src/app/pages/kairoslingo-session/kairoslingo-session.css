@@ -1,118 +1,223 @@
+/* ===============================
+   BASE
+================================ */
 .page {
-  min-height: 100vh;
-  background: linear-gradient(180deg, #eaf2ff 0%, #f7faff 100%);
-  padding: 16px 0 96px;
+  padding: 16px 0 40px;
+  background: linear-gradient(180deg, #eef4ff 0%, #ffffff 55%);
 }
 
 .page-container {
-  max-width: 520px;
+  max-width: 720px;
   margin: 0 auto;
   padding: 0 16px;
 }
-.progress-wrap {
-  position: sticky;
-  top: 64px;
-  z-index: 10;
-  background: #eaf2ff;
-  padding: 10px 0;
-}
 
-.progress-bar {
-  height: 10px;
-  background: #dbe7ff;
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.progress-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #2563eb, #60a5fa);
-  transition: width 300ms ease;
-}
-.quiz-card {
-  margin-top: 16px;
-  background: #ffffff;
-  border-radius: 22px;
-  padding: 22px;
-  box-shadow: 0 18px 40px rgba(37, 99, 235, 0.18);
-}
-.question {
-  font-size: 1.4rem;
-  font-weight: 900;
-  color: #0f172a;
-  line-height: 1.4;
-  margin-bottom: 20px;
-}
-.options {
-  display: grid;
-  gap: 14px;
-}
-
-.option {
-  width: 100%;
-  padding: 16px;
-  border-radius: 18px;
-  border: 2px solid #dbe7ff;
-  background: #ffffff;
-  display: flex;
-  align-items: center;
-  gap: 14px;
+/* ===============================
+   HEADER
+================================ */
+.kicker {
   font-weight: 800;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+h1 {
+  margin: 0 0 6px;
+  font-size: 2.2rem;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  color: #0f172a;
+}
+
+.page-intro {
+  color: #475569;
+  line-height: 1.6;
   font-size: 1rem;
-  cursor: pointer;
-  transition: all 180ms ease;
+  margin-bottom: 16px;
 }
 
-.option:hover {
-  background: #f0f6ff;
+/* ===============================
+   GAME STATS (DUOLINGO STYLE)
+================================ */
+.game-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 16px 0;
 }
 
-.option.selected {
-  border-color: #2563eb;
-  background: #eef4ff;
+.game-card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 12px;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.08);
 }
 
-.option.correct {
-  background: #ecfdf5;
-  border-color: #22c55e;
+.game-card .label {
+  font-size: 0.72rem;
+  color: #64748b;
+  font-weight: 800;
 }
 
-.option.wrong {
-  background: #fef2f2;
-  border-color: #ef4444;
+.game-card .value {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #2563eb;
 }
+
+.game-card.xp .value {
+  position: relative;
+}
+
+/* XP pop */
 .xp-pop {
   position: absolute;
-  right: 14px;
+  right: -8px;
   top: -10px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 900;
   color: #16a34a;
-  animation: pop 650ms ease;
+  animation: pop 700ms ease;
 }
 
 @keyframes pop {
   0% { transform: translateY(8px); opacity: 0; }
   40% { transform: translateY(-2px); opacity: 1; }
-  100% { transform: translateY(-10px); opacity: 0; }
-}
-.actions {
-  position: fixed;
-  bottom: 14px;
-  left: 0;
-  right: 0;
-  padding: 0 16px;
-  display: flex;
-  justify-content: center;
+  100% { transform: translateY(-12px); opacity: 0; }
 }
 
-.actions .btn {
+/* ===============================
+   PROGRESS BAR
+================================ */
+.progress-bar {
   width: 100%;
-  max-width: 520px;
-  padding: 16px;
+  height: 10px;
+  background: #dbeafe;
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 18px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  transition: width 400ms ease;
+}
+
+/* ===============================
+   LEVEL SELECT
+================================ */
+.select-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.level-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 18px;
+  text-align: left;
+  border: none;
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.08);
+}
+
+.level-pill {
+  display: inline-block;
+  background: #dbeafe;
+  color: #1d4ed8;
+  font-weight: 900;
+  font-size: 0.75rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.level-card h3 {
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 6px;
+}
+
+.level-card p {
+  color: #475569;
+  line-height: 1.5;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 700;
+}
+
+/* ===============================
+   QUIZ CARD
+================================ */
+.quiz-card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.08);
+}
+
+.question {
+  font-size: 1.35rem;
+  font-weight: 900;
+  margin-bottom: 14px;
+}
+
+.options {
+  display: grid;
+  gap: 10px;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 18px;
+  background: #f8fafc;
+  border: 2px solid transparent;
+}
+
+.option.correct {
+  background: #dcfce7;
+  border-color: #16a34a;
+}
+
+.option.wrong {
+  background: #fee2e2;
+  border-color: #dc2626;
+}
+
+/* ===============================
+   FEEDBACK / ACTIONS
+================================ */
+.actions {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+  margin-top: 14px;
+}
+
+.btn {
+  flex: 1;
+  padding: 14px;
   border-radius: 18px;
   font-weight: 900;
+  border: none;
+}
+
+.btn.primary {
   background: #2563eb;
   color: #ffffff;
-  box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
+}
+
+.btn.ghost {
+  background: #f1f5f9;
+  color: #0f172a;
 }
