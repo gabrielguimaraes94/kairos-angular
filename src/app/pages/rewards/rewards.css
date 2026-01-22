@@ -1,0 +1,254 @@
+/* Page base */
+.page {
+  padding: 28px 0;
+}
+
+.page-container {
+  width: 100%;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 22px;
+}
+
+h1 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  font-size: 2.1rem;
+}
+
+.page-intro {
+  margin: 0 0 22px;
+  max-width: 980px;
+  color: #475569;
+  line-height: 1.7;
+  font-weight: 500;
+  font-size: 1.02rem;
+}
+
+/* Rewards grid */
+.rewards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 16px;
+  margin-bottom: 18px;
+}
+
+.reward-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 18px;
+  position: relative;
+  transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+}
+
+.reward-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(2, 6, 23, 0.08);
+  border-color: rgba(37, 99, 235, 0.25);
+}
+.reward-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.reward-head h3 {
+  margin: 0; /* remove the top margin you had on h3 */
+}
+
+.reward-card h3 {
+  margin: 10px 0 8px;
+  color: #0f172a;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 1.15rem;
+}
+
+.reward-card p {
+  margin: 0 0 12px;
+  color: #334155;
+  line-height: 1.65;
+  font-weight: 500;
+}
+
+.reward-card ul {
+  margin: 0;
+  padding-left: 18px;
+  color: #334155;
+  line-height: 1.75;
+  font-weight: 500;
+}
+
+.reward-card li {
+  margin: 6px 0;
+}
+
+/* Badge */
+.badge {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+  font-size: 0.95rem;
+  border: 1px solid rgba(15, 23, 42, 0.10);
+}
+
+.badge.bronze {
+  background: rgba(245, 158, 11, 0.14);
+  color: #92400e;
+}
+
+.badge.silver {
+  background: rgba(148, 163, 184, 0.22);
+  color: #334155;
+}
+
+.badge.gold {
+  background: rgba(234, 179, 8, 0.18);
+  color: #854d0e;
+}
+
+/* Trainer section */
+.trainer {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 14px;
+  margin-top: 12px;
+  padding: 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: linear-gradient(180deg, #0b1220 0%, #0a1630 55%, #0b1732 100%);
+  color: #e2e8f0;
+}
+
+.trainer-left h2 {
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  font-size: 1.45rem;
+}
+
+.trainer-left p {
+  margin: 0 0 16px;
+  color: rgba(226, 232, 240, 0.92);
+  line-height: 1.7;
+  font-weight: 500;
+  max-width: 760px;
+}
+
+/* Actions */
+.trainer-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.trainer-btn {
+  padding: 11px 16px;
+  border-radius: 12px;
+  font-weight: 900;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 140ms ease, box-shadow 140ms ease, background 140ms ease, border-color 140ms ease;
+}
+
+.trainer-btn.primary {
+  background: #2563eb;
+  color: #ffffff;
+  box-shadow: 0 10px 22px rgba(37, 99, 235, 0.26);
+}
+
+.trainer-btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 28px rgba(37, 99, 235, 0.32);
+}
+
+.trainer-btn.ghost {
+  background: transparent;
+  color: #e2e8f0;
+  border-color: rgba(226, 232, 240, 0.25);
+}
+
+.trainer-btn.ghost:hover {
+  transform: translateY(-1px);
+  border-color: rgba(226, 232, 240, 0.38);
+}
+
+/* Right box */
+.trainer-right {
+  display: flex;
+}
+
+.trainer-box {
+  width: 100%;
+  border-radius: 18px;
+  border: 1px solid rgba(226, 232, 240, 0.14);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 12px;
+}
+
+.recognition-path {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.recognition-path span {
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(226, 232, 240, 0.18);
+  background: rgba(15, 23, 42, 0.18);
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 900;
+  font-size: 0.86rem;
+}
+
+.trainer-box p {
+  margin: 0 0 10px;
+  color: rgba(226, 232, 240, 0.9);
+  line-height: 1.55;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.note {
+  margin: 10px 0 0;
+  padding-top: 10px;
+  border-top: 1px solid rgba(226, 232, 240, 0.14);
+  color: rgba(226, 232, 240, 0.8);
+  font-weight: 450;
+  font-size: 0.92rem;
+}
+
+.trainer-foot {
+  margin-top: 10px;
+  padding: 8px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(226, 232, 240, 0.12);
+  background: rgba(15, 23, 42, 0.14);
+  color: rgba(226, 232, 240, 0.88);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 1100px) {
+  .rewards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trainer {
+    grid-template-columns: 1fr;
+  }
+}

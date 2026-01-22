@@ -1,0 +1,115 @@
+<section class="page">
+  <div class="page-container">
+
+    <div class="header-row">
+      <div>
+        <div class="kicker">KAIROS • KAIROSLINGO</div>
+        <h1>Kairoslingo</h1>
+        <p class="page-intro">
+          Choose your digitization challenge and validate your daily knowledge.
+        </p>
+      </div>
+
+      <div class="stats" *ngIf="step !== 'select'">
+        <div class="stat">
+          <div class="label">Quiz</div>
+          <div class="value">{{ currentQuizTitle }}</div>
+        </div>
+        <div class="stat">
+          <div class="label">Progress</div>
+          <div class="value">{{ progressLabel }}</div>
+        </div>
+        <div class="stat xp">
+          <div class="label">XP</div>
+          <div class="value">
+            {{ xp }}
+            <span class="xp-pop" *ngIf="showXpPop">+{{ xpPopValue }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SELECT -->
+    <div class="select-grid" *ngIf="step === 'select'">
+      <button class="level-card" (click)="startQuiz('basic')">
+        <div class="level-pill">Basic</div>
+        <h3>Basic Digitization Test</h3>
+        <p>Validate fundamentals and common digital tools used on the shopfloor.</p>
+        <div class="meta">4 questions • ~2 min</div>
+      </button>
+
+      <button class="level-card" (click)="startQuiz('intermediate')">
+        <div class="level-pill">Intermediate</div>
+        <h3>Intermediate Digitization Test</h3>
+        <p>Validate practical knowledge of plant tools, layouts and processes.</p>
+        <div class="meta">3 questions • ~2 min</div>
+      </button>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="quiz-card" *ngIf="step === 'quiz' && currentQuestion">
+      <div class="quiz-top">
+        <div class="badges">
+          <span class="badge">{{ level === 'basic' ? 'Basic' : 'Intermediate' }}</span>
+          <span class="badge topic">{{ currentQuestion.topic }}</span>
+        </div>
+
+        <button class="link" (click)="backToSelect()">Change level</button>
+      </div>
+
+      <h2 class="question">{{ currentQuestion.question }}</h2>
+
+      <div class="options">
+        <button
+          class="option"
+          *ngFor="let opt of currentQuestion.options"
+          (click)="selectAnswer(opt)"
+          [class.selected]="selectedOption === opt"
+          [class.correct]="selectedOption && opt === currentQuestion.correct"
+          [class.wrong]="selectedOption === opt && isCorrect === false"
+          [disabled]="!!selectedOption"
+        >
+          <span class="dot"></span>
+          <span class="text">{{ opt }}</span>
+        </button>
+      </div>
+
+      <div class="feedback" *ngIf="selectedOption">
+        <div class="fb correct" *ngIf="isCorrect">Correct. +XP</div>
+        <div class="fb wrong" *ngIf="isCorrect === false">
+          Not quite. Correct answer: <strong>{{ currentQuestion.correct }}</strong>
+        </div>
+
+        <div class="actions">
+          <button class="btn ghost" (click)="backToSelect()">Exit</button>
+          <button class="btn primary" (click)="next()">
+            {{ currentIndex + 1 >= questions.length ? 'Finish' : 'Next' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- RESULT -->
+    <div class="result" *ngIf="step === 'result'">
+      <div class="result-card">
+        <div class="result-top">
+          <div class="result-pill" [class.ok]="passed" [class.bad]="!passed">
+            {{ passed ? 'PASS' : 'TRY AGAIN' }}
+          </div>
+          <div class="result-title">{{ currentQuizTitle }}</div>
+        </div>
+
+        <div class="score">
+          <div class="big">{{ score }}/{{ questions.length }}</div>
+          <div class="small">Score • XP earned: {{ xp }}</div>
+        </div>
+
+        <div class="result-actions">
+          <button class="btn ghost" (click)="backToSelect()">Pick another level</button>
+          <button class="btn primary" (click)="restartSameLevel()">Retry this quiz</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
