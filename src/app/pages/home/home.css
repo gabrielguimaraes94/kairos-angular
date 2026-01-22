@@ -678,67 +678,81 @@
    MOBILE FIXES — SAFE OVERRIDES
    ====================================================== */
 
-
-/* 📱 Mobile (default phones) */
 @media (max-width: 768px) {
 
+  /* HERO */
+  .hero,
   .hero-gestamp {
-    padding: 64px 16px 56px;
+    padding: 48px 16px !important;
+    text-align: left;
   }
 
-  .hero-content {
-    max-width: 100%;
-  }
-
+  .hero h1,
   .hero-gestamp h1 {
-    font-size: 2.2rem;
-    line-height: 1.15;
+    font-size: 32px !important;
+    line-height: 1.2;
   }
 
-  .hero-subtitle {
-    font-size: 1rem;
+  .hero-subtitle,
+  .hero .subtitle {
+    font-size: 0.95rem;
   }
 
+  /* HERO ACTIONS */
   .hero-actions {
     flex-direction: column;
     gap: 12px;
   }
 
+  .hero-actions button,
   .hero-actions .btn {
     width: 100%;
-    justify-content: center;
   }
 
+  /* HERO CARDS */
   .hero-metrics {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
-  .metric {
-    padding: 16px;
+  /* CYCLE */
+  .cycle-grid {
+    grid-template-columns: 1fr !important;
   }
 
-  .why-grid,
-  .tracks-grid,
+  /* TRACKS */
+  .tracks-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .track-card {
+    margin-top: 16px;
+  }
+
+  /* KPIS */
   .kpis-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
+  /* WHY */
+  .why-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* METHOD */
   .method-steps {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
 
-  .cta-container {
-    padding: 32px 20px;
+  /* CTA */
+  .cta {
+    padding: 48px 16px;
   }
 
-  .cta h2 {
-    font-size: 1.6rem;
+  .cta-actions {
+    flex-direction: column;
   }
-}
 
-/* 📱 Small phones */
-@media (max-width: 420px) {
-  .hero-gestamp h1 {
-    font-size: 1.9rem;
+  .cta-btn {
+    width: 100%;
   }
 }

@@ -162,3 +162,60 @@ ul {
   font-weight: 800;
   line-height: 1.5;
 }
+
+/* ===========================
+   MOBILE FIXES (IMPORTANT)
+   =========================== */
+
+@media (max-width: 768px) {
+
+  .lp {
+    padding: 36px 16px 64px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .level-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .meta {
+    font-size: 0.85rem;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 16px;
+  }
+
+  .card-title {
+    font-size: 1.05rem;
+  }
+
+  ul {
+    font-size: 0.95rem;
+  }
+
+  .chip {
+    font-size: 0.78rem;
+  }
+
+  .outcome {
+    font-size: 0.95rem;
+  }
+}
