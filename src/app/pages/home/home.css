@@ -1,3 +1,5 @@
+
+
 .hero {
   min-height: 70vh;
   display: flex;
@@ -670,4 +672,87 @@
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+}
+
+/* ======================================================
+   MOBILE FIXES — SAFE OVERRIDES
+   ====================================================== */
+
+@media (max-width: 768px) {
+
+  /* HERO */
+  .hero,
+  .hero-gestamp {
+    padding: 48px 16px !important;
+    text-align: left;
+  }
+
+  .hero h1,
+  .hero-gestamp h1 {
+    font-size: 32px !important;
+    line-height: 1.2;
+  }
+
+  .hero-subtitle,
+  .hero .subtitle {
+    font-size: 0.95rem;
+  }
+
+  /* HERO ACTIONS */
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero-actions button,
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  /* HERO CARDS */
+  .hero-metrics {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* CYCLE */
+  .cycle-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* TRACKS */
+  .tracks-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .track-card {
+    margin-top: 16px;
+  }
+
+  /* KPIS */
+  .kpis-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* WHY */
+  .why-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* METHOD */
+  .method-steps {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* CTA */
+  .cta {
+    padding: 48px 16px;
+  }
+
+  .cta-actions {
+    flex-direction: column;
+  }
+
+  .cta-btn {
+    width: 100%;
+  }
 }
