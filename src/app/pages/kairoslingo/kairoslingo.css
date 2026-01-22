@@ -318,3 +318,111 @@
   flex-wrap: wrap;
   justify-content: flex-end;
 }
+
+/* ===========================
+   MOBILE FIXES – KAIROSLINGO
+   =========================== */
+
+@media (max-width: 768px) {
+
+  .klingo {
+    padding: 32px 16px 64px;
+  }
+
+  /* HERO */
+  .klingo-hero {
+    grid-template-columns: 1fr;
+    padding: 18px;
+    gap: 14px;
+  }
+
+  .klingo-hero h1 {
+    font-size: 2rem;
+  }
+
+  .sub {
+    font-size: 0.95rem;
+    max-width: 100%;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+  }
+
+  /* STATS */
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat {
+    padding: 14px;
+  }
+
+  /* MOCK / LESSONS */
+  .lesson {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .lesson-xp {
+    align-self: flex-start;
+  }
+
+  /* SECTIONS */
+  .section {
+    margin-top: 28px;
+  }
+
+  .section-head h2 {
+    font-size: 1.6rem;
+  }
+
+  /* HOW IT WORKS */
+  .how-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .how-card {
+    padding: 16px;
+  }
+
+  /* TRACKS */
+  .tracks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .track {
+    padding: 16px;
+  }
+
+  .track-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+
+  .track-desc {
+    font-size: 0.95rem;
+  }
+
+  /* CTA */
+  .bottom-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .b-right {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .b-right .btn {
+    width: 100%;
+  }
+}
