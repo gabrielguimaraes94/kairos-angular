@@ -39,7 +39,7 @@ h1 {
 }
 
 /* ===============================
-   GAME STATS (DUOLINGO STYLE)
+   GAME STATS
 ================================ */
 .game-stats {
   display: grid;
@@ -80,10 +80,10 @@ h1 {
   font-size: 0.85rem;
   font-weight: 900;
   color: #16a34a;
-  animation: pop 700ms ease;
+  animation: xp-pop 700ms ease;
 }
 
-@keyframes pop {
+@keyframes xp-pop {
   0% { transform: translateY(8px); opacity: 0; }
   40% { transform: translateY(-2px); opacity: 1; }
   100% { transform: translateY(-12px); opacity: 0; }
@@ -112,7 +112,6 @@ h1 {
 ================================ */
 .select-grid {
   display: grid;
-  grid-template-columns: 1fr;
   gap: 14px;
 }
 
@@ -120,9 +119,9 @@ h1 {
   background: #ffffff;
   border-radius: 22px;
   padding: 18px;
-  text-align: left;
   border: none;
   box-shadow: 0 14px 30px rgba(2, 6, 23, 0.08);
+  cursor: pointer;
 }
 
 .level-pill {
@@ -182,6 +181,13 @@ h1 {
   border-radius: 18px;
   background: #f8fafc;
   border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 120ms ease, box-shadow 120ms ease;
+}
+
+.option:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(2, 6, 23, 0.08);
 }
 
 .option.correct {
@@ -195,14 +201,67 @@ h1 {
 }
 
 /* ===============================
-   FEEDBACK / ACTIONS
+   FEEDBACK
+================================ */
+.answer-feedback {
+  margin-top: 14px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: feedback-pop 0.35s ease-out;
+}
+
+.answer-feedback.success {
+  background: #ecfdf5;
+  border: 1px solid #34d399;
+}
+
+.answer-feedback.success::before {
+  content: "🎉";
+  font-size: 1.4rem;
+}
+
+.answer-feedback.error {
+  background: #fff1f2;
+  border: 1px solid #f87171;
+}
+
+.answer-feedback.error::before {
+  content: "❌";
+  font-size: 1.4rem;
+}
+
+.feedback-title {
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: -0.01em;
+  color: #065f46;
+}
+
+.feedback-xp {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #059669;
+}
+
+@keyframes feedback-pop {
+  0% { transform: scale(0.96); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* ===============================
+   ACTIONS
 ================================ */
 .actions {
   display: flex;
-  gap: 10px;
   justify-content: space-between;
-  margin-top: 14px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
 }
+
 
 .btn {
   flex: 1;
@@ -220,4 +279,124 @@ h1 {
 .btn.ghost {
   background: #f1f5f9;
   color: #0f172a;
+}
+
+/* Pulse next button after success */
+.answer-feedback.success ~ .actions .btn.primary {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+/* ===============================
+   RESULT (PREMIUM)
+================================ */
+.result {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.result-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 28px 22px;
+  text-align: center;
+  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.12);
+  max-width: 420px;
+  width: 100%;
+}
+
+.result-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.result-icon.ok {
+  color: #16a34a;
+}
+
+.result-icon.bad {
+  color: #dc2626;
+}
+
+.result-title {
+  font-size: 1.6rem;
+  font-weight: 900;
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+.result-subtitle {
+  font-size: 0.95rem;
+  color: #475569;
+  margin-bottom: 18px;
+}
+
+.result-metrics {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 22px;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metric .label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.metric .value {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #0f172a;
+}
+
+.metric .value.xp {
+  color: #16a34a;
+}
+
+.result-actions {
+  display: flex;
+  gap: 12px;
+}
+/* ===============================
+   CHANGE QUIZ (SOFT BUTTON)
+================================ */
+.change-level {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0;
+  background: #f1f5f9;
+  border: 1px solid #e5e7eb;
+
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #334155;
+
+  padding: 6px 10px;
+  border-radius: 999px;
+
+  cursor: pointer;
+  transition: background 120ms ease, color 120ms ease, transform 80ms ease;
+}
+
+.change-level:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.change-level:active {
+  transform: scale(0.96);
 }

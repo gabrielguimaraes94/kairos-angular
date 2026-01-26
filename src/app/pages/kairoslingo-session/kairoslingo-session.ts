@@ -19,6 +19,11 @@ type Question = {
   styleUrls: ['./kairoslingo-session.css'],
 })
 export class KairoslingoSession {
+  /* ---------- Sounds ---------- */
+  correctSound = new Audio('assets/sounds/correct.mp3');
+  wrongSound = new Audio('assets/sounds/wrong.mp3');
+
+  /* ---------- State ---------- */
   step: Step = 'select';
   level: Level | null = null;
 
@@ -29,14 +34,18 @@ export class KairoslingoSession {
   xp = 0;
   passed = false;
 
-  // UI state
+  /* ---------- UI State ---------- */
   selectedOption: string | null = null;
   isCorrect: boolean | null = null;
+  showFeedback = false;
   showXpPop = false;
   xpPopValue = 0;
 
+  /* ---------- Getters ---------- */
   get currentQuizTitle(): string {
-    return this.level === 'basic' ? 'Basic Digitization Test' : 'Intermediate Digitization Test';
+    return this.level === 'basic'
+      ? 'Basic Digitization Test'
+      : 'Intermediate Digitization Test';
   }
 
   get currentQuestion(): Question | null {
@@ -47,9 +56,13 @@ export class KairoslingoSession {
     return `${this.currentIndex + 1}/${this.questions.length}`;
   }
 
+  /* ---------- Flow ---------- */
   startQuiz(level: Level) {
     this.level = level;
-    this.questions = level === 'basic' ? this.basicQuestions : this.intermediateQuestions;
+    this.questions =
+      level === 'basic'
+        ? this.basicQuestions
+        : this.intermediateQuestions;
 
     this.currentIndex = 0;
     this.score = 0;
@@ -62,25 +75,33 @@ export class KairoslingoSession {
 
   selectAnswer(option: string) {
     if (!this.currentQuestion) return;
-    if (this.selectedOption) return; // trava para não trocar depois
+    if (this.selectedOption) return;
 
     this.selectedOption = option;
-
     const correct = option === this.currentQuestion.correct;
     this.isCorrect = correct;
 
     if (correct) {
       this.score += 1;
       const gain = 15;
+
+      this.correctSound.currentTime = 0;
+      this.correctSound.play();
+
       this.xp += gain;
       this.popXp(gain);
+    } else {
+      this.wrongSound.currentTime = 0;
+      this.wrongSound.play();
     }
+
+    this.showFeedback = true;
   }
 
   next() {
     if (!this.selectedOption) return;
 
-    this.currentIndex += 1;
+    this.currentIndex++;
 
     if (this.currentIndex >= this.questions.length) {
       this.finish();
@@ -91,8 +112,8 @@ export class KairoslingoSession {
   }
 
   finish() {
-    // 70% para passar
-    this.passed = this.score >= Math.ceil(this.questions.length * 0.7);
+    this.passed =
+      this.score >= Math.ceil(this.questions.length * 0.7);
     this.step = 'result';
   }
 
@@ -112,9 +133,11 @@ export class KairoslingoSession {
     this.startQuiz(this.level);
   }
 
+  /* ---------- Helpers ---------- */
   private resetAnswerState() {
     this.selectedOption = null;
     this.isCorrect = null;
+    this.showFeedback = false;
     this.showXpPop = false;
     this.xpPopValue = 0;
   }
@@ -122,76 +145,96 @@ export class KairoslingoSession {
   private popXp(value: number) {
     this.xpPopValue = value;
     this.showXpPop = true;
-    window.setTimeout(() => (this.showXpPop = false), 650);
+    setTimeout(() => (this.showXpPop = false), 650);
   }
 
-  /* ---------- BASIC DIGITIZATION TEST ---------- */
+  /* ---------- QUESTIONS ---------- */
+
   basicQuestions: Question[] = [
     {
       topic: 'IoT Insight',
       question: 'What is IoT Insight?',
       options: [
-        'A planning and scheduling tool',
-        'The main tool for real-time visualization and analysis of machine data',
         'A maintenance ticket system',
+        'The main tool for real-time visualization and analysis of machine data',
+        'A planning and scheduling tool'
       ],
-      correct: 'The main tool for real-time visualization and analysis of machine data',
+      correct:
+        'The main tool for real-time visualization and analysis of machine data',
     },
     {
       topic: 'IoT Insight vs IoT Manager',
-      question: 'What is the difference between IoT Insight and IoT Manager?',
+      question:
+        'What is the difference between IoT Insight and IoT Manager?',
       options: [
-        'Both are used only for visualization',
-        'IoT Insight is for analysis, IoT Manager is the administrative backend',
         'IoT Manager is used to visualize timeseries data',
+        'IoT Insight is for analysis, IoT Manager is the administrative backend',
+        'Both are used only for visualization'
       ],
-      correct: 'IoT Insight is for analysis, IoT Manager is the administrative backend',
+      correct:
+        'IoT Insight is for analysis, IoT Manager is the administrative backend',
     },
     {
       topic: 'Timeseries',
-      question: 'What is the main use of Timeseries in IoT Insight?',
+      question:
+        'What is the main use of Timeseries in IoT Insight?',
       options: [
-        'To configure alarms',
         'To visualize historical and real-time trends of machine signals',
         'To create production plans',
+        'To configure alarms'
       ],
-      correct: 'To visualize historical and real-time trends of machine signals',
+      correct:
+        'To visualize historical and real-time trends of machine signals',
     },
     {
       topic: 'Rules',
       question: 'What is a rule?',
       options: [
-        'A manual inspection checklist',
         'An automated condition that triggers actions when criteria are met',
         'A maintenance work order',
+        'A manual inspection checklist'
       ],
-      correct: 'An automated condition that triggers actions when criteria are met',
+      correct:
+        'An automated condition that triggers actions when criteria are met',
     },
   ];
 
-  /* ---------- INTERMEDIATE DIGITIZATION TEST ---------- */
+
   intermediateQuestions: Question[] = [
-    {
-      topic: 'Plant Visualization',
-      question: 'Which tool allows you to visualize information about your entire plant across its layout?',
-      options: ['Virtual Planner', 'Plant Layout Viewer / Digital Layout', 'IoT Manager'],
-      correct: 'Plant Layout Viewer / Digital Layout',
-    },
-    {
-      topic: 'VQM',
-      question: 'How could you see expired forms for a specific Control Sheet?',
-      options: [
-        'IoT Insight → Alarms',
-        'VQM → Control Sheets → Select sheet → Filter status = Expired',
-        'Virtual Planner → Forms',
-      ],
-      correct: 'VQM → Control Sheets → Select sheet → Filter status = Expired',
-    },
-    {
-      topic: 'Industry 4.0 Planning',
-      question: 'What is the planning app in the Industry 4.0 ecosystem?',
-      options: ['IoT Insight', 'Virtual Planner', 'IoT Manager'],
-      correct: 'Virtual Planner',
-    },
-  ];
+  {
+    topic: 'Plant Visualization',
+    question:
+      'Which tool allows you to visualize information about your entire plant across its layout?',
+    options: [
+      'IoT Manager',
+      'Plant Layout Viewer / Digital Layout',
+      'Virtual Planner'
+    ],
+    correct: 'Plant Layout Viewer / Digital Layout',
+  },
+  {
+    topic: 'VQM',
+    question:
+      'How could you see expired forms for a specific Control Sheet?',
+    options: [
+      'Virtual Planner → Forms',
+      'VQM → Control Sheets → Select sheet → Filter status = Expired',
+      'IoT Insight → Alarms'
+    ],
+    correct:
+      'VQM → Control Sheets → Select sheet → Filter status = Expired',
+  },
+  {
+    topic: 'Industry 4.0 Planning',
+    question:
+      'What is the planning app in the Industry 4.0 ecosystem?',
+    options: [
+      'IoT Manager',
+      'Virtual Planner',
+      'IoT Insight'
+    ],
+    correct: 'Virtual Planner',
+  },
+];
+
 }

@@ -12,7 +12,7 @@
       </div>
     </div>
 
-    <!-- GAME STATS (DUOLINGO STYLE) -->
+    <!-- GAME STATS -->
     <div class="game-stats" *ngIf="step !== 'select'">
       <div class="game-card">
         <div class="label">Quiz</div>
@@ -41,7 +41,7 @@
       </div>
     </div>
 
-    <!-- SELECT -->
+    <!-- SELECT LEVEL -->
     <div class="select-grid" *ngIf="step === 'select'">
       <button class="level-card" (click)="startQuiz('basic')">
         <div class="level-pill">Basic</div>
@@ -60,6 +60,7 @@
 
     <!-- QUIZ -->
     <div class="quiz-card" *ngIf="step === 'quiz' && currentQuestion">
+
       <div class="quiz-top">
         <div class="badges">
           <span class="badge">
@@ -67,12 +68,11 @@
           </span>
           <span class="badge topic">{{ currentQuestion.topic }}</span>
         </div>
-
-        <button class="link" (click)="backToSelect()">Change level</button>
-      </div>
+      </div> <!-- ✅ FECHOU quiz-top -->
 
       <h2 class="question">{{ currentQuestion.question }}</h2>
 
+      <!-- OPTIONS -->
       <div class="options">
         <button
           class="option"
@@ -88,38 +88,74 @@
         </button>
       </div>
 
-      <div class="feedback" *ngIf="selectedOption">
-        <div class="fb correct" *ngIf="isCorrect">
-          Correct 🎉 +{{ xpPopValue }} XP
+      <!-- FEEDBACK (DUOLINGO STYLE) -->
+      <div
+        class="answer-feedback"
+        *ngIf="showFeedback"
+        [class.success]="isCorrect === true"
+        [class.error]="isCorrect === false"
+      >
+        <div class="feedback-left">
+          <div class="feedback-title">
+            {{ isCorrect ? 'Correct!' : 'Not quite' }}
+          </div>
+
+          <div class="feedback-sub" *ngIf="isCorrect">
+            Keep it up!
+          </div>
+
+          <div class="feedback-sub" *ngIf="!isCorrect">
+            Correct answer:
+            <strong>{{ currentQuestion.correct }}</strong>
+          </div>
         </div>
 
-        <div class="fb wrong" *ngIf="isCorrect === false">
-          Not quite. Correct answer:
-          <strong>{{ currentQuestion.correct }}</strong>
-        </div>
-
-        <div class="actions">
-          <button class="btn ghost" (click)="backToSelect()">Exit</button>
-          <button class="btn primary" (click)="next()">
-            {{ currentIndex + 1 >= questions.length ? 'Finish' : 'Next' }}
-          </button>
+        <div class="feedback-right" *ngIf="isCorrect">
+          +15 XP
         </div>
       </div>
-    </div>
+
+      <!-- ACTIONS -->
+      <div class="actions">
+        <button class="change-level" (click)="backToSelect()">
+          ↩ Change quiz
+        </button>
+
+        <button class="btn primary" (click)="next()">
+          {{ currentIndex + 1 >= questions.length ? 'Finish' : 'Next' }}
+        </button>
+      </div>
+
+    </div> <!-- ✅ FECHOU quiz-card -->
 
     <!-- RESULT -->
     <div class="result" *ngIf="step === 'result'">
       <div class="result-card">
-        <div class="result-top">
-          <div class="result-pill" [class.ok]="passed" [class.bad]="!passed">
-            {{ passed ? 'PASS' : 'TRY AGAIN' }}
-          </div>
-          <div class="result-title">{{ currentQuizTitle }}</div>
+
+        <div class="result-icon" [class.ok]="passed" [class.bad]="!passed">
+          {{ passed ? '🎉' : '❌' }}
         </div>
 
-        <div class="score">
-          <div class="big">{{ score }}/{{ questions.length }}</div>
-          <div class="small">XP earned: {{ xp }}</div>
+        <h2 class="result-title">
+          {{ passed ? 'Great job!' : 'Try again' }}
+        </h2>
+
+        <p class="result-subtitle">
+          {{ passed
+            ? 'You completed the quiz successfully.'
+            : 'Review the content and give it another shot.' }}
+        </p>
+
+        <div class="result-metrics">
+          <div class="metric">
+            <span class="label">Score</span>
+            <span class="value">{{ score }}/{{ questions.length }}</span>
+          </div>
+
+          <div class="metric">
+            <span class="label">XP Earned</span>
+            <span class="value xp">+{{ xp }}</span>
+          </div>
         </div>
 
         <div class="result-actions">
@@ -130,6 +166,7 @@
             Retry this quiz
           </button>
         </div>
+
       </div>
     </div>
 
