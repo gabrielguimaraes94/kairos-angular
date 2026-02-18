@@ -3,25 +3,23 @@
 
     <div class="training-top">
       <div class="breadcrumbs">
-        <a routerLink="/academy">Academy</a>
-        <span class="sep">/</span>
-        <a routerLink="/learning-paths">Learning Paths</a>
-        <span class="sep">/</span>
-        <span class="current">Predictive Maintenance</span>
+        <ng-container *ngFor="let bc of module.breadcrumbs; let last = last">
+          <a *ngIf="bc.link" [routerLink]="bc.link">{{ bc.label }}</a>
+          <span *ngIf="!bc.link" class="current">{{ bc.label }}</span>
+          <span *ngIf="!last" class="sep">/</span>
+        </ng-container>
       </div>
 
       <div class="training-title">
-        <span class="tag">Predictive Maintenance</span>
-        <h1>Vibration Analysis – Fundamentals</h1>
-        <p class="subtitle">
-          Learn how vibration patterns help detect mechanical issues early and reduce unplanned downtime.
-        </p>
+        <span class="tag">{{ module.tag }}</span>
+        <h1>{{ module.title }}</h1>
+        <p class="subtitle">{{ module.subtitle }}</p>
       </div>
 
       <div class="meta">
-        <div class="meta-item"><span>Level</span><strong>Intermediate</strong></div>
-        <div class="meta-item"><span>Duration</span><strong>45 minutes</strong></div>
-        <div class="meta-item"><span>Format</span><strong>Hands-on + micro-quiz</strong></div>
+        <div class="meta-item"><span>Level</span><strong>{{ module.meta.level }}</strong></div>
+        <div class="meta-item"><span>Duration</span><strong>{{ module.meta.duration }}</strong></div>
+        <div class="meta-item"><span>Format</span><strong>{{ module.meta.format }}</strong></div>
       </div>
     </div>
 
@@ -30,139 +28,99 @@
       <aside class="sidebar">
         <div class="sidebar-title">Module Progress</div>
 
-        <div class="step done">
-          <div class="step-status">✓</div>
-          <div class="step-text">
-            <div class="step-name">01 — Context</div>
-            <div class="step-desc">Why this matters on the shopfloor</div>
+        <div class="step"
+             *ngFor="let s of module.steps"
+             [ngClass]="s.status">
+          <div class="step-status">
+            <ng-container [ngSwitch]="s.status">
+              <span *ngSwitchCase="'done'">✓</span>
+              <span *ngSwitchCase="'current'">●</span>
+              <span *ngSwitchCase="'locked'">🔒</span>
+            </ng-container>
           </div>
-        </div>
-
-        <div class="step current">
-          <div class="step-status">●</div>
           <div class="step-text">
-            <div class="step-name">02 — Fundamentals</div>
-            <div class="step-desc">Core concepts and key signals</div>
-          </div>
-        </div>
-
-        <div class="step locked">
-          <div class="step-status">🔒</div>
-          <div class="step-text">
-            <div class="step-name">03 — Industrial Example</div>
-            <div class="step-desc">Bearing failure scenario</div>
-          </div>
-        </div>
-
-        <div class="step locked">
-          <div class="step-status">🔒</div>
-          <div class="step-text">
-            <div class="step-name">04 — Shopfloor Task</div>
-            <div class="step-desc">Apply to a real asset</div>
+            <div class="step-name">{{ s.name }}</div>
+            <div class="step-desc">{{ s.desc }}</div>
           </div>
         </div>
 
         <div class="sidebar-box">
           <div class="box-title">Completion Criteria</div>
           <ul>
-            <li>Read fundamentals section</li>
-            <li>Finish the micro-quiz</li>
-            <li>Review the shopfloor task</li>
+            <li *ngFor="let c of module.completionCriteria">{{ c }}</li>
           </ul>
         </div>
       </aside>
 
       <!-- Main content -->
       <main class="content">
-        <div class="content-card">
-          <h2>Industrial Context</h2>
-          <p>
-            Unexpected bearing failures are a major driver of unplanned downtime. Vibration analysis enables early detection
-            by identifying abnormal patterns before failure occurs.
-          </p>
-        </div>
 
-        <div class="content-card">
-          <h2>Key Concepts</h2>
-          <div class="pill-grid">
-            <div class="pill">Amplitude</div>
-            <div class="pill">Frequency</div>
-            <div class="pill">Baseline</div>
-            <div class="pill">Trend</div>
-            <div class="pill">Alarm Threshold</div>
-            <div class="pill">Failure Mode</div>
-          </div>
-          <p class="muted">
-            In practice, you compare current vibration readings against a baseline and track trends to identify degradation.
-          </p>
-        </div>
-
-        <div class="content-card highlight">
-          <h2>Real-World Application</h2>
-          <ul class="list">
-            <li>Detect early bearing defects in motors and gearboxes</li>
-            <li>Support maintenance planning with evidence-based decisions</li>
-            <li>Reduce emergency corrective maintenance and downtime</li>
-          </ul>
-        </div>
-
+        <!-- ✅ QUIZ FIRST -->
         <div class="content-card">
           <div class="quiz-head">
             <h2>Micro-Quiz</h2>
-            <span class="quiz-badge">2 questions</span>
+            <span class="quiz-badge">{{ module.quiz.length }} questions</span>
           </div>
 
-          <div class="quiz-item">
-            <div class="q">1) What is the main value of vibration analysis?</div>
-            <label class="opt"><input type="radio" name="q1"> Detect issues early before failure</label>
-            <label class="opt"><input type="radio" name="q1"> Increase motor speed</label>
-            <label class="opt"><input type="radio" name="q1"> Replace lubrication processes</label>
-          </div>
+          <p class="muted">Start here. You can review the concepts below anytime.</p>
 
-          <div class="quiz-item">
-            <div class="q">2) What should you compare against to identify abnormal readings?</div>
-            <label class="opt"><input type="radio" name="q2"> A baseline + trend over time</label>
-            <label class="opt"><input type="radio" name="q2"> Only the last measurement</label>
-            <label class="opt"><input type="radio" name="q2"> The operator’s intuition</label>
+          <div class="quiz-item" *ngFor="let q of module.quiz; let i = index">
+            <div class="q">{{ i + 1 }}) {{ q.text }}</div>
+
+            <label class="opt" *ngFor="let opt of q.options">
+              <input
+                type="radio"
+                [name]="q.id"
+                [checked]="answers[q.id] === opt.id"
+                (change)="selectAnswer(q.id, opt.id)"
+                [disabled]="submitted"
+              />
+              {{ opt.text }}
+            </label>
+
+            <div class="quiz-feedback" *ngIf="submitted">
+              <div class="ok" *ngIf="isCorrect(q.id)">Correct ✅</div>
+              <div class="bad" *ngIf="!isCorrect(q.id)">Not quite ❌</div>
+              <div class="exp">{{ q.explanation }}</div>
+            </div>
           </div>
 
           <div class="quiz-actions">
-            <button class="btn primary">Submit Quiz</button>
+            <button class="btn primary" (click)="submitQuiz()" [disabled]="submitted">
+              Submit Quiz
+            </button>
             <button class="btn ghost">Save Progress</button>
           </div>
         </div>
+        <div class="content-card" *ngIf="module.blocks.length > 0">
+          <h2>{{ module.blocks[0].title }}</h2>
 
+          <p *ngIf="module.blocks[0].body">{{ module.blocks[0].body }}</p>
+
+          <ul class="list" *ngIf="module.blocks[0].list?.length">
+            <li *ngFor="let item of module.blocks[0].list">{{ item }}</li>
+          </ul>
+        </div>
+
+
+        <!-- SHOPFLOOR -->
         <div class="content-card shopfloor">
-          <h2>Shopfloor Task</h2>
-          <p>
-            Select one critical motor and define a baseline vibration reading. Record a second reading after one week
-            and document the trend. If readings exceed threshold, propose an action plan.
-          </p>
+          <h2>{{ module.shopfloorTask.title }}</h2>
+          <p>{{ module.shopfloorTask.description }}</p>
 
           <div class="task-grid">
-            <div class="task-box">
-              <div class="t-title">Asset</div>
-              <div class="t-desc">Motor / Gearbox ID</div>
-            </div>
-            <div class="task-box">
-              <div class="t-title">Baseline</div>
-              <div class="t-desc">Initial measurement</div>
-            </div>
-            <div class="task-box">
-              <div class="t-title">Trend</div>
-              <div class="t-desc">Compare over time</div>
-            </div>
-            <div class="task-box">
-              <div class="t-title">Action</div>
-              <div class="t-desc">Plan + escalation</div>
+            <div class="task-box" *ngFor="let t of module.shopfloorTask.tiles">
+              <div class="t-title">{{ t.title }}</div>
+              <div class="t-desc">{{ t.desc }}</div>
             </div>
           </div>
 
           <div class="content-actions">
             <button class="btn primary">Mark as Completed</button>
-            <a class="btn ghost" routerLink="/">Back to Home</a>
+            <a class="btn ghost" routerLink="/training-example">Back to Training Examples</a>
           </div>
         </div>
+
       </main>
     </div>
 

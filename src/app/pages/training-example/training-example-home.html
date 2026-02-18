@@ -1,0 +1,91 @@
+<section class="training-home">
+  <div class="home-container">
+
+    <div class="home-top">
+      <div class="breadcrumbs">
+        <a routerLink="/academy">Academy</a>
+        <span class="sep">/</span>
+        <span class="current">Training Examples</span>
+      </div>
+
+      <h1>Training Examples</h1>
+      <p class="subtitle">
+        Choose a topic to explore practical examples and short learning modules.
+      </p>
+    </div>
+
+    <div class="topic-grid">
+      <ng-container *ngFor="let t of topics; trackBy: trackByTitle">
+
+        <!-- Active topic (clickable) -->
+        <a
+          *ngIf="t.status === 'active'; else disabledCard"
+          class="topic-card"
+          [routerLink]="t.route"
+        >
+          <div class="icon">{{ t.icon }}</div>
+
+          <div class="card-body">
+            <span class="tag">{{ t.tag }}</span>
+
+            <div class="title-row">
+              <h2>{{ t.title }}</h2>
+              <span class="badge active">Available</span>
+            </div>
+
+            <p>{{ t.desc }}</p>
+
+            <!-- ✅ Light preview (only for active module) -->
+            <div class="preview" *ngIf="t.title === 'Digitalization'">
+              <div class="preview-label">Key concepts</div>
+
+              <div class="pill-row">
+                <span class="pill">Data</span>
+                <span class="pill">Processes</span>
+                <span class="pill">Automation</span>
+                <span class="pill">Transparency</span>
+                <span class="pill">Decision Support</span>
+                <span class="pill">People</span>
+              </div>
+
+              <div class="preview-label" style="margin-top: 10px;">What it is NOT</div>
+              <ul class="mini-list">
+                <li>Employee punishment</li>
+                <li>Replacing people with machines</li>
+                <li>Extra reporting for no reason</li>
+              </ul>
+
+              <div class="cta-row">
+                <span class="cta">Start module</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="arrow">›</div>
+        </a>
+
+        <!-- Disabled topic (not clickable) -->
+        <ng-template #disabledCard>
+          <div class="topic-card disabled" aria-disabled="true">
+            <div class="icon">{{ t.icon }}</div>
+
+            <div class="card-body">
+              <span class="tag">{{ t.tag }}</span>
+
+              <div class="title-row">
+                <h2>{{ t.title }}</h2>
+                <span class="badge soon">Soon</span>
+              </div>
+
+              <p>{{ t.desc }}</p>
+            </div>
+
+            <div class="arrow">›</div>
+          </div>
+        </ng-template>
+
+      </ng-container>
+    </div>
+
+  </div>
+</section>
