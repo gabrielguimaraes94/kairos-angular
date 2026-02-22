@@ -45,9 +45,37 @@ export class TrainingExampleHomeComponent {
       concepts: ['IoT', 'Timeseries', 'Rules', 'Workflows', 'Alerts', 'KPIs'],
       not: ['Extra bureaucracy', 'Replacing people', 'Blocking information flow'],
     },
-    { title: 'GPS', desc: 'Gestamp Production System principles and mindset.', icon: '⚙️', tag: 'Coming soon', status: 'soon' },
-    { title: 'Cobots', desc: 'Collaborative robots in production environments.', icon: '🤖', tag: 'Coming soon', status: 'soon' },
-    { title: 'Humanoid', desc: 'Human-machine interaction and future applications.', icon: '🧠', tag: 'Coming soon', status: 'soon' },
+    {
+      title: 'GPS',
+      desc: 'Gestamp Production System and Operational Excellence fundamentals.',
+      icon: '⚙️',
+      tag: 'Base module',
+      status: 'active',
+      route: '/training-example/gps/fundamentals',
+      concepts: ['Processes', 'People', 'Standards', 'PDCA', 'SDCA'],
+      not: ['External dependency', 'One-time improvement', 'Only documentation'],
+    },
+    {
+      title: 'Humanoids',
+      desc: 'Human-like robots: capabilities, limitations, and real industrial use cases.',
+      icon: '🤖',
+      tag: 'Base module',
+      status: 'active',
+      route: '/training-example/humanoids/fundamentals',
+      concepts: ['Sensors', 'Vision', 'ZMP', 'Balance', 'Logistics'],
+      not: ['Science fiction', 'Human replacement', 'Unlimited payload'],
+    },
+
+    {
+      title: 'Cobots',
+      desc: 'Collaborative robots: safe human-robot workspaces and practical use cases.',
+      icon: '🤖',
+      tag: 'Base module',
+      status: 'active',
+      route: '/training-example/cobots/fundamentals',
+      concepts: ['Collaboration', 'Risk Assessment', 'Quality Checks', 'Payload'],
+      not: ['High-speed automation', 'Heavy loads', 'No safety analysis'],
+    },
   ];
 
   trackByTitle(_: number, item: TrainingTopic) {

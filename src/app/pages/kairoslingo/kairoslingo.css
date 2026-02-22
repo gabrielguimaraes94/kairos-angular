@@ -1,3 +1,8 @@
+/* =========================================================
+   KAIROSLINGO (CLEAN) — Focus: explain purpose + start demo
+   Uses: .klingo, .k-hero, .k-preview, .k-mini, .k-bottom
+   ========================================================= */
+
 .klingo {
   padding: 46px 20px 80px;
   background: #ffffff;
@@ -8,50 +13,7 @@
   margin: 0 auto;
 }
 
-.klingo-hero {
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 18px;
-  margin-bottom: 34px;
-  padding: 22px;
-  border-radius: 18px;
-  border: 1px solid #e5e7eb;
-  background:
-    radial-gradient(900px 380px at 30% 20%, rgba(37, 99, 235, 0.14), transparent 55%),
-    linear-gradient(180deg, #0b1220 0%, #0b1220 100%);
-  color: #ffffff;
-}
-
-.kicker {
-  display: inline-flex;
-  font-weight: 800;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.72);
-  margin-bottom: 12px;
-}
-
-.klingo-hero h1 {
-  margin: 0 0 10px;
-  font-size: 3rem;
-  letter-spacing: -0.03em;
-}
-
-.sub {
-  margin: 0 0 18px;
-  color: rgba(255, 255, 255, 0.78);
-  line-height: 1.7;
-  max-width: 560px;
-}
-
-.hero-actions {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 18px;
-}
-
+/* ---------- Buttons (kept generic because used elsewhere) ---------- */
 .btn {
   padding: 11px 16px;
   border-radius: 12px;
@@ -71,358 +33,211 @@
 
 .btn.ghost {
   background: transparent;
-  color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.42);
+  color: #0f172a;
+  border: 1px solid #cbd5e1;
 }
 
 .btn:hover {
   opacity: 0.92;
 }
 
-.stats {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.stat {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
+.btn.big {
+  padding: 12px 18px;
   border-radius: 14px;
-  padding: 12px;
+  font-size: 1rem;
 }
 
-.s-value {
-  font-weight: 900;
-  font-size: 1.2rem;
-}
-
-.s-label {
-  margin-top: 6px;
-  color: rgba(255, 255, 255, 0.72);
-}
-
-.mock {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.mock-top {
-  padding: 14px 14px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.mock-title {
-  font-weight: 900;
-}
-
-.mock-pill {
-  font-weight: 900;
-  font-size: 0.85rem;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(37, 99, 235, 0.18);
-  border: 1px solid rgba(37, 99, 235, 0.35);
-}
-
-.mock-body {
-  padding: 14px;
-}
-
-.lesson {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding: 12px;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.10);
-  margin-bottom: 10px;
-}
-
-.lesson-title {
-  font-weight: 900;
-}
-
-.lesson-desc {
-  margin-top: 4px;
-  color: rgba(255, 255, 255, 0.72);
-  font-size: 0.92rem;
-}
-
-.lesson-xp {
-  font-weight: 900;
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.10);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 8px 10px;
-  border-radius: 999px;
-  white-space: nowrap;
-}
-
-.progress {
-  margin: 14px 0;
-}
-
-.p-label {
-  font-weight: 800;
-  color: rgba(255, 255, 255, 0.78);
-  margin-bottom: 8px;
-}
-
-.bar {
-  height: 8px;
-  background: rgba(255, 255, 255, 0.12);
-  border-radius: 999px;
-  overflow: hidden;
-}
-
-.fill {
-  height: 100%;
-  background: #2563eb;
-}
-
-.full {
+.btn.full {
   width: 100%;
 }
 
-.section {
-  margin-top: 34px;
+/* ---------- HERO ---------- */
+.k-hero {
+  margin-top: 18px;
+  background: #0b1220;
+  border-radius: 22px;
+  padding: 26px;
+  color: #e5e7eb;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.section-head h2 {
-  margin: 0 0 8px;
-  color: #0f172a;
-  letter-spacing: -0.02em;
-  font-size: 1.9rem;
+.k-kicker {
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.8;
+  font-size: 0.8rem;
 }
 
-.section-head p {
-  margin: 0 0 18px;
-  color: #475569;
+.k-hero h1 {
+  margin: 8px 0 10px;
+  font-size: 3rem;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+}
+
+.k-sub {
+  margin: 0 0 0;
+  color: #cbd5e1;
   line-height: 1.7;
+  max-width: 720px;
 }
 
-.how-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
+.k-cta {
+  margin-top: 16px;
 }
 
-.how-card {
-  background: #f8fafc;
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  padding: 18px;
+.k-cta-note {
+  margin-top: 10px;
+  color: #93c5fd;
+  font-weight: 700;
+  font-size: 0.92rem;
 }
 
-.how-title {
+/* Topics chips (inside hero) */
+.k-topics {
+  margin-top: 16px;
+}
+
+.k-topics-title {
   font-weight: 900;
-  color: #0f172a;
   margin-bottom: 8px;
+  color: #e2e8f0;
 }
 
-.how-card p {
-  margin: 0;
-  color: #334155;
-  line-height: 1.65;
-}
-
-.tracks-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 16px;
-}
-
-.track {
-  border: 1px solid #e5e7eb;
-  border-radius: 14px;
-  padding: 18px;
-  background: #ffffff;
-}
-
-.track-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-
-.track-title {
-  font-weight: 900;
-  color: #0f172a;
-}
-
-.track-tag {
-  font-weight: 900;
-  padding: 6px 10px;
-  border-radius: 999px;
-  background: rgba(37, 99, 235, 0.10);
-  border: 1px solid rgba(37, 99, 235, 0.22);
-  color: #0f172a;
-}
-
-.track-desc {
-  color: #475569;
-  line-height: 1.65;
-  margin-bottom: 12px;
-}
-
-.track-foot {
+.k-chip-row {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
 .chip {
-  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 10px;
   border-radius: 999px;
-  background: #f1f5f9;
-  color: #0f172a;
-  border: 1px solid #e5e7eb;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #e5e7eb;
   font-weight: 800;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
 }
 
-.bottom-cta {
-  margin-top: 40px;
-  border-radius: 16px;
-  padding: 20px;
-  background: #0b1220;
-  color: #ffffff;
+/* ---------- Preview card (right side) ---------- */
+.k-preview {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.k-preview-top {
+  padding: 14px 14px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  gap: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-.bottom-cta p {
-  margin: 10px 0 0;
+.k-preview-title {
+  font-weight: 900;
+  color: #e5e7eb;
+}
+
+.k-pill {
+  font-weight: 900;
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: rgba(37, 99, 235, 0.25);
+  border: 1px solid rgba(37, 99, 235, 0.35);
+  color: #dbeafe;
+}
+
+.k-preview-body {
+  padding: 14px;
+}
+
+.k-line {
+  display: grid;
+  grid-template-columns: 14px 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.k-line .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #60a5fa;
+  margin-top: 6px;
+}
+
+.k-line .t {
+  font-weight: 900;
+  color: #e5e7eb;
+}
+
+.k-line .d {
   color: #cbd5e1;
-  line-height: 1.7;
+  margin-top: 2px;
+  font-size: 0.92rem;
 }
 
-.b-right {
+/* ---------- Purpose section ---------- */
+.k-mini {
+  margin-top: 18px;
+  padding: 14px 2px 0;
+}
+
+.k-mini h2 {
+  margin: 0 0 10px;
+  color: #0f172a;
+  letter-spacing: -0.02em;
+  font-size: 1.9rem;
+}
+
+.k-bullets {
+  margin: 0;
+  padding-left: 18px;
+  line-height: 1.9;
+  color: #334155;
+}
+
+.k-bullets strong {
+  color: #0f172a;
+}
+
+/* ---------- Bottom CTAs ---------- */
+.k-bottom {
+  margin-top: 16px;
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
-  justify-content: flex-end;
 }
 
-/* ===========================
-   MOBILE FIXES – KAIROSLINGO
-   =========================== */
-
-@media (max-width: 768px) {
-
-  .klingo {
-    padding: 32px 16px 64px;
-  }
-
-  /* HERO */
-  .klingo-hero {
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .k-hero {
     grid-template-columns: 1fr;
     padding: 18px;
-    gap: 14px;
   }
 
-  .klingo-hero h1 {
-    font-size: 2rem;
+  .k-hero h1 {
+    font-size: 2.1rem;
   }
 
-  .sub {
-    font-size: 0.95rem;
-    max-width: 100%;
-  }
-
-  .hero-actions {
-    flex-direction: column;
-  }
-
-  .hero-actions .btn {
+  .k-bottom .btn {
     width: 100%;
   }
+}
 
-  /* STATS */
-  .stats {
-    grid-template-columns: 1fr;
-  }
-
-  .stat {
-    padding: 14px;
-  }
-
-  /* MOCK / LESSONS */
-  .lesson {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 8px;
-  }
-
-  .lesson-xp {
-    align-self: flex-start;
-  }
-
-  /* SECTIONS */
-  .section {
-    margin-top: 28px;
-  }
-
-  .section-head h2 {
-    font-size: 1.6rem;
-  }
-
-  /* HOW IT WORKS */
-  .how-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .how-card {
-    padding: 16px;
-  }
-
-  /* TRACKS */
-  .tracks-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .track {
-    padding: 16px;
-  }
-
-  .track-top {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 6px;
-  }
-
-  .track-desc {
-    font-size: 0.95rem;
-  }
-
-  /* CTA */
-  .bottom-cta {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 14px;
-  }
-
-  .b-right {
-    width: 100%;
-    justify-content: flex-start;
-  }
-
-  .b-right .btn {
-    width: 100%;
+@media (max-width: 768px) {
+  .klingo {
+    padding: 32px 16px 64px;
   }
 }
