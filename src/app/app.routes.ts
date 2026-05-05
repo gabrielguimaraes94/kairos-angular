@@ -4,6 +4,8 @@ import { Home } from './pages/home/home';
 import { Academy } from './pages/academy/academy';
 import { LearningPaths } from './pages/learning-paths/learning-paths';
 import { AiLearningPath } from './pages/ai-learning-path/ai-learning-path';
+import { IndustryLearningPath } from './pages/industry-learning-path/industry-learning-path';
+import { DigitalizationLearningPath } from './pages/digitalization-learning-path/digitalization-learning-path';
 import { SkillMatrix } from './pages/skill-matrix/skill-matrix';
 import { Rewards } from './pages/rewards/rewards';
 
@@ -20,6 +22,8 @@ export const routes: Routes = [
   { path: 'academy', component: Academy },
   { path: 'learning-paths', component: LearningPaths },
   { path: 'learning-paths/ai', component: AiLearningPath },
+  { path: 'learning-paths/industry', component: IndustryLearningPath },
+  { path: 'learning-paths/digitalization', component: DigitalizationLearningPath },
   { path: 'skill-matrix', component: SkillMatrix },
   { path: 'rewards', component: Rewards },
 
