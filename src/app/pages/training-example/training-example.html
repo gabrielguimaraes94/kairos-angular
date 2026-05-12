@@ -2,13 +2,6 @@
   <div class="training-container">
 
     <div class="training-top">
-      <div class="breadcrumbs">
-        <ng-container *ngFor="let bc of module.breadcrumbs; let last = last">
-          <a *ngIf="bc.link" [routerLink]="bc.link">{{ bc.label }}</a>
-          <span *ngIf="!bc.link" class="current">{{ bc.label }}</span>
-          <span *ngIf="!last" class="sep">/</span>
-        </ng-container>
-      </div>
 
       <div class="training-title">
         <span class="tag">{{ module.tag }}</span>
