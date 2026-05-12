@@ -11,6 +11,8 @@ interface TrainingTopic {
   tag: string;
   status: TopicStatus;
   route?: string;
+  concepts?: string[];
+  not?: string[];
 }
 
 @Component({
@@ -29,34 +31,48 @@ export class TrainingExampleHome {
       tag: 'Base module',
       status: 'active',
       route: '/training-example/digitalization/fundamentals',
-    },
-    {
-      title: 'GPS',
-      desc: 'Gestamp Production System principles and mindset.',
-      icon: '⚙️',
-      tag: 'Coming soon',
-      status: 'soon',
+      concepts: ['Data', 'Processes', 'Automation', 'Transparency', 'Decision Support', 'People'],
+      not: ['Employee punishment', 'Replacing people with machines', 'Extra reporting for no reason'],
     },
     {
       title: 'Industry 4.0',
-      desc: 'Smart manufacturing and connected systems.',
+      desc: 'Connected systems, IoT Insight, rules, workflows and real-time visibility.',
       icon: '🏭',
-      tag: 'Coming soon',
-      status: 'soon',
+      tag: 'Base module',
+      status: 'active',
+      route: '/training-example/industry4/fundamentals',
+      concepts: ['IoT Insight', 'Timeseries', 'Rules', 'VQM', 'VWM', 'Alerts'],
+      not: ['Extra bureaucracy', 'Replacing people', 'Blocking information flow'],
+    },
+    {
+      title: 'GPS',
+      desc: 'Gestamp Production System principles and operational excellence mindset.',
+      icon: '⚙️',
+      tag: 'Base module',
+      status: 'active',
+      route: '/training-example/gps/fundamentals',
+      concepts: ['Standards', 'PDCA', 'SDCA', 'Processes', 'People'],
+      not: ['One-time improvement', 'Only documentation', 'External dependency'],
+    },
+    {
+      title: 'Humanoids',
+      desc: 'Human-like robots: capabilities, limitations and real industrial use cases.',
+      icon: '🧠',
+      tag: 'Base module',
+      status: 'active',
+      route: '/training-example/humanoids/fundamentals',
+      concepts: ['Sensors', 'Vision', 'Balance', 'Logistics', 'Human interaction'],
+      not: ['Science fiction', 'Human replacement', 'Unlimited payload'],
     },
     {
       title: 'Cobots',
-      desc: 'Collaborative robots in production environments.',
+      desc: 'Collaborative robots: safe human-robot workspaces and practical use cases.',
       icon: '🤖',
-      tag: 'Coming soon',
-      status: 'soon',
-    },
-    {
-      title: 'Humanoid',
-      desc: 'Human-machine interaction and future applications.',
-      icon: '🧠',
-      tag: 'Coming soon',
-      status: 'soon',
+      tag: 'Base module',
+      status: 'active',
+      route: '/training-example/cobots/fundamentals',
+      concepts: ['Collaboration', 'Risk Assessment', 'Quality Checks', 'Payload'],
+      not: ['High-speed automation', 'Heavy loads', 'No safety analysis'],
     },
   ];
 

@@ -2,14 +2,15 @@
   <div class="klingo-container">
 
     <!-- HERO -->
-    <div class="k-hero">
-      <div>
-        <div class="k-kicker">Kairos • Microlearning</div>
+    <section class="k-hero">
+      <div class="k-hero-content">
+        <div class="k-kicker">KAIROS • MICROLEARNING</div>
+
         <h1>Kairoslingo</h1>
 
         <p class="k-sub">
-          A fast way to validate shopfloor knowledge and standardize daily routines.
-          The goal is simple: take a short demo session and see how it works.
+          A fast, gamified way to validate shopfloor knowledge, reinforce key concepts,
+          and standardize daily routines across shifts and plants.
         </p>
 
         <div class="k-cta">
@@ -17,13 +18,18 @@
             Start Demo Now
           </a>
 
-          <div class="k-cta-note">
-            Takes ~8 minutes • Basic / Intermediate • Instant feedback
-          </div>
+          <a class="btn ghost dark" routerLink="/academy">
+            Explore Academy
+          </a>
+        </div>
+
+        <div class="k-cta-note">
+          Takes ~8 minutes • Basic / Intermediate • Instant feedback
         </div>
 
         <div class="k-topics">
           <div class="k-topics-title">Today's demo topics</div>
+
           <div class="k-chip-row">
             <span class="chip">Digitalization</span>
             <span class="chip">Industry 4.0</span>
@@ -35,7 +41,12 @@
       <!-- RIGHT CARD -->
       <div class="k-preview">
         <div class="k-preview-top">
-          <div class="k-preview-title">Demo flow</div>
+          <div>
+            <div class="k-preview-title">Demo flow</div>
+            <div class="k-preview-sub">Simple, short and practical</div>
+          </div>
+
+          <span class="k-pill">Live demo</span>
         </div>
 
         <div class="k-preview-body">
@@ -50,41 +61,78 @@
           <div class="k-line">
             <div class="dot"></div>
             <div>
-              <div class="t">Topic shows first</div>
-              <div class="d">Example: Industry 4.0</div>
+              <div class="t">Answer short challenges</div>
+              <div class="d">Example: Industry 4.0 concepts</div>
             </div>
           </div>
 
           <div class="k-line">
             <div class="dot"></div>
             <div>
-              <div class="t">Instant results</div>
-              <div class="d">Correct answer + explanation</div>
+              <div class="t">Receive instant feedback</div>
+              <div class="d">Correct answer + short explanation</div>
             </div>
           </div>
 
-          <a class="btn primary full" routerLink="/kairoslingo/session">
+          <a class="btn primary light full" routerLink="/kairoslingo/session">
             Start now
           </a>
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- SIMPLE HOW IT WORKS (NO HEAVY CARDS) -->
-    <div class="k-mini">
-      <h2>What this is for</h2>
+    <!-- PURPOSE -->
+    <section class="k-mini">
+      <div class="section-header">
+        <div class="kicker-light">WHY IT MATTERS</div>
+        <h2>What this is for</h2>
+        <p>
+          Kairoslingo helps transform learning into quick practice, making knowledge easier to retain,
+          validate and standardize.
+        </p>
+      </div>
 
-      <ul class="k-bullets">
-        <li><strong>Validate knowledge</strong> quickly, without long trainings.</li>
-        <li><strong>Standardize routines</strong> across shifts and plants.</li>
-        <li><strong>Reduce mistakes</strong> with consistent concepts and language.</li>
-      </ul>
-    </div>
+      <div class="k-benefits">
+        <article class="benefit-card">
+          <div class="benefit-icon">01</div>
+          <h3>Validate knowledge</h3>
+          <p>
+            Confirm understanding quickly without relying only on long training sessions.
+          </p>
+        </article>
 
-    <div class="k-bottom">
-      <a class="btn primary big" routerLink="/kairoslingo/session">Start Demo Now</a>
-      <a class="btn ghost" routerLink="/academy">Explore Academy</a>
-    </div>
+        <article class="benefit-card">
+          <div class="benefit-icon">02</div>
+          <h3>Standardize routines</h3>
+          <p>
+            Reinforce the same concepts across shifts, roles and plants.
+          </p>
+        </article>
+
+        <article class="benefit-card">
+          <div class="benefit-icon">03</div>
+          <h3>Reduce mistakes</h3>
+          <p>
+            Use short feedback loops to strengthen daily execution and common language.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="k-bottom">
+      <div>
+        <div class="kicker-light">READY TO TRY?</div>
+        <h2>Experience the demo session</h2>
+        <p>
+          This mockup shows how Kairos can make training more engaging, measurable and easy to repeat.
+        </p>
+      </div>
+
+      <div class="k-bottom-actions">
+        <a class="btn primary big" routerLink="/kairoslingo/session">Start Demo Now</a>
+        <a class="btn ghost" routerLink="/training-example">View Training Examples</a>
+      </div>
+    </section>
 
   </div>
 </section>

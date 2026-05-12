@@ -2,27 +2,20 @@
   <div class="home-container">
 
     <div class="home-top">
-      <div class="breadcrumbs">
-        <a routerLink="/academy">Academy</a>
-        <span class="sep">/</span>
-        <span class="current">Training Examples</span>
-      </div>
+      <div class="kicker">KAIROS • TRAINING EXAMPLES</div>
 
       <h1>Training Examples</h1>
+
       <p class="subtitle">
-        Choose a topic to explore practical examples and short learning modules.
+        Choose a topic to explore practical examples and short learning modules connected to Kairos learning paths.
       </p>
     </div>
 
     <div class="topic-grid">
       <ng-container *ngFor="let t of topics; trackBy: trackByTitle">
 
-        <!-- Active topic (clickable) -->
-        <a
-          *ngIf="t.status === 'active'; else disabledCard"
-          class="topic-card"
-          [routerLink]="t.route"
-        >
+        <!-- Active topic -->
+        <a *ngIf="t.status === 'active'; else disabledCard" class="topic-card" [routerLink]="t.route">
           <div class="icon">{{ t.icon }}</div>
 
           <div class="card-body">
@@ -35,25 +28,24 @@
 
             <p>{{ t.desc }}</p>
 
-            <!-- ✅ Light preview (only for active module) -->
-            <div class="preview" *ngIf="t.title === 'Digitalization'">
-              <div class="preview-label">Key concepts</div>
+            <div class="preview" *ngIf="t.concepts?.length || t.not?.length">
+              <div *ngIf="t.concepts?.length">
+                <div class="preview-label">Key concepts</div>
 
-              <div class="pill-row">
-                <span class="pill">Data</span>
-                <span class="pill">Processes</span>
-                <span class="pill">Automation</span>
-                <span class="pill">Transparency</span>
-                <span class="pill">Decision Support</span>
-                <span class="pill">People</span>
+                <div class="pill-row">
+                  <span class="pill" *ngFor="let c of t.concepts">
+                    {{ c }}
+                  </span>
+                </div>
               </div>
 
-              <div class="preview-label" style="margin-top: 10px;">What it is NOT</div>
-              <ul class="mini-list">
-                <li>Employee punishment</li>
-                <li>Replacing people with machines</li>
-                <li>Extra reporting for no reason</li>
-              </ul>
+              <div *ngIf="t.not?.length" class="not-block">
+                <div class="preview-label">What it is NOT</div>
+
+                <ul class="mini-list">
+                  <li *ngFor="let n of t.not">{{ n }}</li>
+                </ul>
+              </div>
 
               <div class="cta-row">
                 <span class="cta">Start module</span>
@@ -64,7 +56,7 @@
           <div class="arrow">›</div>
         </a>
 
-        <!-- Disabled topic (not clickable) -->
+        <!-- Disabled topic -->
         <ng-template #disabledCard>
           <div class="topic-card disabled" aria-disabled="true">
             <div class="icon">{{ t.icon }}</div>

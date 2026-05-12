@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'app-what-is-kairos',
+  selector: 'app-implementation',
   standalone: true,
   imports: [RouterLink],
-  templateUrl: './what-is-kairos.html',
-  styleUrls: ['./what-is-kairos.css']
+  templateUrl: './implementation.html',
+  styleUrl: './implementation.css'
 })
-export class WhatIsKairos { }
+export class Implementation {
+
+}

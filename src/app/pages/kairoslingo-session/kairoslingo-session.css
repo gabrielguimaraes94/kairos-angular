@@ -1,127 +1,182 @@
+:host {
+  display: block;
+}
+
 /* ===============================
-   BASE
+   KAIROSLINGO SESSION
+   Kairos visual identity + gamified UI
 ================================ */
+
 .page {
-  padding: 16px 0 40px;
-  background: linear-gradient(180deg, #eef4ff 0%, #ffffff 55%);
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(0, 84, 166, 0.14), transparent 34rem),
+    linear-gradient(180deg, #f8fafc 0%, #eef3f8 100%);
+  padding: 4.5rem 1.25rem 6rem;
+  color: #102033;
 }
 
 .page-container {
-  max-width: 720px;
+  width: min(860px, 100%);
   margin: 0 auto;
-  padding: 0 16px;
 }
 
 /* ===============================
    HEADER
 ================================ */
+
+.header-row {
+  margin-bottom: 1.5rem;
+}
+
 .kicker {
+  font-size: 0.78rem;
   font-weight: 800;
-  letter-spacing: 0.12em;
-  font-size: 0.72rem;
-  color: #64748b;
-  margin-bottom: 6px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #0054a6;
+  margin-bottom: 0.75rem;
 }
 
 h1 {
-  margin: 0 0 6px;
-  font-size: 2.2rem;
-  font-weight: 900;
-  letter-spacing: -0.03em;
-  color: #0f172a;
+  font-size: clamp(2.4rem, 5vw, 4.8rem);
+  line-height: 0.95;
+  letter-spacing: -0.06em;
+  margin: 0;
+  color: #0b1727;
 }
 
 .page-intro {
-  color: #475569;
-  line-height: 1.6;
-  font-size: 1rem;
-  margin-bottom: 16px;
+  margin: 1rem 0 0;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: #536276;
+  max-width: 760px;
 }
 
 /* ===============================
    GAME STATS
 ================================ */
+
 .game-stats {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin: 16px 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin: 1.5rem 0 1rem;
 }
 
 .game-card {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 12px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(120, 138, 160, 0.18);
+  border-radius: 22px;
+  padding: 1rem;
   text-align: center;
-  box-shadow: 0 10px 24px rgba(37, 99, 235, 0.08);
+  box-shadow: 0 18px 45px rgba(18, 35, 56, 0.08);
 }
 
 .game-card .label {
-  font-size: 0.72rem;
-  color: #64748b;
+  display: block;
+  color: #67778d;
   font-weight: 800;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
 }
 
 .game-card .value {
-  font-size: 1rem;
+  position: relative;
+  color: #0054a6;
   font-weight: 900;
-  color: #2563eb;
+  font-size: 1rem;
+  line-height: 1.3;
 }
 
-.game-card.xp .value {
-  position: relative;
+.game-card.xp {
+  background:
+    radial-gradient(circle at top right, rgba(0, 84, 166, 0.1), transparent 12rem),
+    rgba(255, 255, 255, 0.9);
 }
 
 .xp-pop {
   position: absolute;
-  right: -8px;
-  top: -10px;
-  font-size: 0.85rem;
-  font-weight: 900;
+  right: -0.8rem;
+  top: -1rem;
   color: #16a34a;
+  font-size: 0.9rem;
+  font-weight: 900;
   animation: xp-pop 700ms ease;
 }
 
 @keyframes xp-pop {
-  0% { transform: translateY(8px); opacity: 0; }
-  40% { transform: translateY(-2px); opacity: 1; }
-  100% { transform: translateY(-12px); opacity: 0; }
+  0% {
+    transform: translateY(8px) scale(0.9);
+    opacity: 0;
+  }
+
+  40% {
+    transform: translateY(-2px) scale(1.05);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-14px) scale(1);
+    opacity: 0;
+  }
 }
 
 /* ===============================
    PROGRESS BAR
 ================================ */
+
 .progress-bar {
   width: 100%;
-  height: 10px;
-  background: #dbeafe;
+  height: 12px;
+  background: rgba(0, 84, 166, 0.1);
   border-radius: 999px;
   overflow: hidden;
-  margin-bottom: 18px;
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(0, 84, 166, 0.08);
 }
 
 .progress-fill {
   height: 100%;
-  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  background: linear-gradient(90deg, #0054a6, #3b82f6);
+  border-radius: inherit;
   transition: width 400ms ease;
 }
 
 /* ===============================
    LEVEL SELECT
 ================================ */
+
 .select-grid {
   display: grid;
-  gap: 14px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
 }
 
 .level-card {
-  background: #ffffff;
-  border-radius: 22px;
-  padding: 18px;
-  border: none;
-  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.08);
-  cursor: pointer;
   text-align: left;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(120, 138, 160, 0.18);
+  border-radius: 28px;
+  padding: 1.25rem;
+  box-shadow: 0 18px 45px rgba(18, 35, 56, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
+}
+
+.level-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 84, 166, 0.28);
+  box-shadow: 0 24px 55px rgba(18, 35, 56, 0.12);
+  background:
+    radial-gradient(circle at top right, rgba(0, 84, 166, 0.08), transparent 18rem),
+    rgba(255, 255, 255, 0.92);
 }
 
 .level-card:active {
@@ -129,158 +184,176 @@ h1 {
 }
 
 .level-pill {
-  display: inline-block;
-  background: #dbeafe;
-  color: #1d4ed8;
-  font-weight: 900;
-  font-size: 0.75rem;
-  padding: 6px 10px;
+  display: inline-flex;
+  align-items: center;
   border-radius: 999px;
-  margin-bottom: 8px;
+  background: rgba(0, 84, 166, 0.08);
+  color: #0054a6;
+  border: 1px solid rgba(0, 84, 166, 0.12);
+  padding: 0.42rem 0.68rem;
+  font-size: 0.76rem;
+  font-weight: 900;
+  margin-bottom: 0.8rem;
 }
 
 .level-card h3 {
-  font-size: 1.2rem;
+  margin: 0 0 0.55rem;
+  color: #0b1727;
+  font-size: 1.35rem;
+  line-height: 1.15;
   font-weight: 900;
-  margin: 0 0 6px;
-  color: #0f172a;
+  letter-spacing: -0.04em;
 }
 
 .level-card p {
   margin: 0;
-  color: #475569;
-  line-height: 1.5;
+  color: #536276;
+  line-height: 1.65;
+  font-weight: 650;
 }
 
 .meta {
-  margin-top: 10px;
+  margin-top: 1rem;
+  color: #67778d;
   font-size: 0.85rem;
-  color: #64748b;
-  font-weight: 700;
+  font-weight: 900;
 }
 
 /* ===============================
    QUIZ CARD
 ================================ */
+
 .quiz-card {
-  background: #ffffff;
-  border-radius: 22px;
-  padding: 18px;
-  box-shadow: 0 14px 30px rgba(2, 6, 23, 0.08);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(120, 138, 160, 0.18);
+  border-radius: 32px;
+  padding: 1.5rem;
+  box-shadow: 0 24px 60px rgba(18, 35, 56, 0.12);
 }
 
-/* top badges row (level) */
 .quiz-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.5rem;
 }
 
 .badge {
   display: inline-flex;
   align-items: center;
-  padding: 6px 10px;
   border-radius: 999px;
+  background: rgba(0, 84, 166, 0.08);
+  color: #0054a6;
+  border: 1px solid rgba(0, 84, 166, 0.12);
+  padding: 0.42rem 0.68rem;
+  font-size: 0.76rem;
   font-weight: 900;
-  font-size: 0.78rem;
-  background: #f1f5f9;
-  color: #0f172a;
-  border: 1px solid #e5e7eb;
 }
 
-/* ✅ TOPIC HEADER (tema antes da pergunta) */
+/* TOPIC HEADER */
+
 .topic-header {
-  border: 1px solid #dbeafe;
-  background: #eff6ff;
-  border-radius: 18px;
-  padding: 12px 14px;
-  margin-bottom: 14px;
+  background:
+    radial-gradient(circle at top right, rgba(0, 84, 166, 0.1), transparent 16rem),
+    rgba(248, 250, 252, 0.86);
+  border: 1px solid rgba(0, 84, 166, 0.14);
+  border-radius: 22px;
+  padding: 1rem;
+  margin-bottom: 1rem;
 }
 
 .topic-label {
   font-size: 0.72rem;
   font-weight: 900;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #1d4ed8;
-  margin-bottom: 6px;
+  color: #0054a6;
+  margin-bottom: 0.45rem;
 }
 
 .topic-title {
-  font-size: 1.05rem;
+  color: #0b1727;
+  font-size: 1.15rem;
   font-weight: 900;
-  color: #0f172a;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.03em;
 }
 
+/* QUESTION */
+
 .question {
-  font-size: 1.35rem;
+  margin: 0 0 1rem;
+  color: #0b1727;
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.05em;
   font-weight: 900;
-  margin: 0 0 14px;
-  color: #0f172a;
 }
 
 /* ===============================
    OPTIONS
 ================================ */
+
 .options {
   display: grid;
-  gap: 10px;
+  gap: 0.75rem;
 }
 
 .option {
   display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 14px;
-  border-radius: 18px;
-  background: #f8fafc;
-  border: 2px solid transparent;
-  cursor: pointer;
-  transition: transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease;
+  align-items: flex-start;
+  gap: 0.8rem;
   text-align: left;
+  cursor: pointer;
+  background: rgba(248, 250, 252, 0.9);
+  border: 2px solid transparent;
+  border-radius: 22px;
+  padding: 1rem;
+  transition:
+    transform 0.16s ease,
+    box-shadow 0.16s ease,
+    border-color 0.16s ease,
+    background 0.16s ease;
 }
 
 .option:hover:not(:disabled) {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 14px rgba(2, 6, 23, 0.08);
-  border-color: rgba(37, 99, 235, 0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(18, 35, 56, 0.08);
+  border-color: rgba(0, 84, 166, 0.22);
 }
 
 .option:disabled {
   cursor: default;
-  opacity: 0.98;
 }
 
 .dot {
-  width: 10px;
-  height: 10px;
+  width: 12px;
+  height: 12px;
+  margin-top: 0.25rem;
   border-radius: 999px;
   background: #cbd5e1;
   flex: 0 0 auto;
 }
 
 .text {
-  color: #0f172a;
+  color: #26384e;
   font-weight: 800;
-  line-height: 1.35;
+  line-height: 1.45;
 }
 
 .option.selected .dot {
-  background: #2563eb;
+  background: #0054a6;
 }
 
 .option.correct {
-  background: #dcfce7;
-  border-color: #16a34a;
+  background: rgba(22, 163, 74, 0.1);
+  border-color: rgba(22, 163, 74, 0.55);
 }
 
 .option.correct .dot {
@@ -288,8 +361,8 @@ h1 {
 }
 
 .option.wrong {
-  background: #fee2e2;
-  border-color: #dc2626;
+  background: rgba(220, 38, 38, 0.1);
+  border-color: rgba(220, 38, 38, 0.5);
 }
 
 .option.wrong .dot {
@@ -297,55 +370,55 @@ h1 {
 }
 
 /* ===============================
-   FEEDBACK (matches your HTML)
+   FEEDBACK
 ================================ */
+
 .answer-feedback {
-  margin-top: 14px;
-  padding: 12px 14px;
-  border-radius: 14px;
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 1rem;
   animation: feedback-pop 0.35s ease-out;
 }
 
 .answer-feedback.success {
-  background: #ecfdf5;
-  border: 1px solid #34d399;
+  background: rgba(22, 163, 74, 0.1);
+  border: 1px solid rgba(22, 163, 74, 0.35);
 }
 
 .answer-feedback.error {
-  background: #fff1f2;
-  border: 1px solid #f87171;
+  background: rgba(220, 38, 38, 0.1);
+  border: 1px solid rgba(220, 38, 38, 0.3);
 }
 
 .feedback-left {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
 }
 
 .feedback-title {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 900;
-  letter-spacing: -0.01em;
-  color: #0f172a;
+  letter-spacing: -0.03em;
+  color: #0b1727;
 }
 
 .answer-feedback.success .feedback-title {
-  color: #065f46;
+  color: #047857;
 }
 
 .answer-feedback.error .feedback-title {
-  color: #9f1239;
+  color: #b91c1c;
 }
 
 .feedback-sub {
-  color: #334155;
+  color: #536276;
   font-weight: 700;
-  font-size: 0.95rem;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
 .feedback-right {
@@ -355,137 +428,179 @@ h1 {
 }
 
 @keyframes feedback-pop {
-  0% { transform: scale(0.96); opacity: 0; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0.96);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* ===============================
    ACTIONS
 ================================ */
+
 .actions {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
 }
 
 .change-level {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  justify-content: center;
+  gap: 0.4rem;
   flex: 0 0 auto;
-  background: #f1f5f9;
-  border: 1px solid #e5e7eb;
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: #334155;
-  padding: 6px 10px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid rgba(120, 138, 160, 0.26);
+  color: #536276;
+  padding: 0.72rem 0.95rem;
   border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 900;
   cursor: pointer;
-  transition: background 120ms ease, color 120ms ease, transform 80ms ease;
+  transition:
+    background 0.16s ease,
+    color 0.16s ease,
+    border-color 0.16s ease,
+    transform 0.1s ease;
 }
 
 .change-level:hover {
-  background: #e2e8f0;
-  color: #0f172a;
+  color: #0b1727;
+  border-color: rgba(0, 84, 166, 0.22);
 }
 
 .change-level:active {
-  transform: scale(0.96);
+  transform: scale(0.97);
 }
 
 .btn {
-  flex: 1;
-  padding: 14px;
-  border-radius: 18px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.85rem 1.15rem;
   font-weight: 900;
-  border: none;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  font-size: 0.92rem;
 }
 
 .btn.primary {
-  background: #2563eb;
+  background: #0054a6;
   color: #ffffff;
+  box-shadow: 0 14px 30px rgba(0, 84, 166, 0.22);
+}
+
+.btn.primary:hover {
+  background: #00498f;
 }
 
 .btn.ghost {
-  background: #f1f5f9;
-  color: #0f172a;
+  background: rgba(255, 255, 255, 0.72);
+  color: #536276;
+  border: 1px solid rgba(120, 138, 160, 0.26);
 }
 
-/* Pulse next button after success */
-.answer-feedback.success ~ .actions .btn.primary {
-  animation: pulse 1s infinite;
+.btn.ghost:hover {
+  color: #0b1727;
+  border-color: rgba(0, 84, 166, 0.22);
+}
+
+.answer-feedback.success~.actions .btn.primary {
+  animation: pulse 1.15s infinite;
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.35); }
-  70% { box-shadow: 0 0 0 10px rgba(37, 99, 235, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+  0% {
+    box-shadow: 0 0 0 0 rgba(0, 84, 166, 0.3);
+  }
+
+  70% {
+    box-shadow: 0 0 0 12px rgba(0, 84, 166, 0);
+  }
+
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 84, 166, 0);
+  }
 }
 
 /* ===============================
    RESULT
 ================================ */
+
 .result {
   display: flex;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 1.5rem;
 }
 
 .result-card {
-  background: #ffffff;
-  border-radius: 24px;
-  padding: 28px 22px;
+  width: min(460px, 100%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(120, 138, 160, 0.18);
+  border-radius: 32px;
+  padding: 1.75rem;
   text-align: center;
-  box-shadow: 0 20px 40px rgba(2, 6, 23, 0.12);
-  max-width: 420px;
-  width: 100%;
+  box-shadow: 0 24px 60px rgba(18, 35, 56, 0.12);
 }
 
 .result-icon {
-  font-size: 3rem;
-  margin-bottom: 10px;
+  font-size: 3.2rem;
+  margin-bottom: 0.8rem;
 }
 
 .result-title {
-  font-size: 1.6rem;
+  margin: 0 0 0.5rem;
+  color: #0b1727;
+  font-size: 1.8rem;
   font-weight: 900;
-  margin: 0 0 6px;
-  color: #0f172a;
+  letter-spacing: -0.04em;
 }
 
 .result-subtitle {
-  font-size: 0.95rem;
-  color: #475569;
-  margin: 0 0 18px;
+  margin: 0 0 1.3rem;
+  color: #536276;
+  line-height: 1.6;
+  font-weight: 650;
 }
 
 .result-metrics {
-  display: flex;
-  justify-content: space-around;
-  gap: 10px;
-  margin-bottom: 22px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .metric {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
+  background: rgba(248, 250, 252, 0.9);
+  border: 1px solid rgba(120, 138, 160, 0.18);
+  border-radius: 20px;
+  padding: 1rem;
 }
 
 .metric .label {
-  font-size: 0.75rem;
-  font-weight: 800;
-  color: #64748b;
+  display: block;
+  color: #67778d;
+  font-size: 0.76rem;
+  font-weight: 900;
   text-transform: uppercase;
+  margin-bottom: 0.25rem;
 }
 
 .metric .value {
-  font-size: 1.2rem;
+  display: block;
+  color: #0b1727;
+  font-size: 1.25rem;
   font-weight: 900;
-  color: #0f172a;
 }
 
 .metric .value.xp {
@@ -494,44 +609,60 @@ h1 {
 
 .result-actions {
   display: flex;
-  gap: 12px;
+  gap: 0.8rem;
 }
 
 /* ===============================
-   MOBILE
+   RESPONSIVE
 ================================ */
-@media (max-width: 640px) {
-  h1 {
-    font-size: 1.9rem;
+
+@media (max-width: 760px) {
+  .page-container {
+    width: min(680px, 100%);
+  }
+
+  .select-grid {
+    grid-template-columns: 1fr;
   }
 
   .game-stats {
     grid-template-columns: 1fr;
   }
+}
 
-  .quiz-card {
-    padding: 16px;
+@media (max-width: 640px) {
+  .page {
+    padding: 3rem 1rem 4.5rem;
   }
 
-  .topic-title {
-    font-size: 1rem;
+  .quiz-card,
+  .result-card,
+  .level-card {
+    border-radius: 22px;
+    padding: 1rem;
   }
 
   .question {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
-  .actions {
+  .actions,
+  .result-actions {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .change-level {
+  .change-level,
+  .btn {
     width: 100%;
-    justify-content: center;
   }
 
-  .result-actions {
+  .answer-feedback {
     flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .result-metrics {
+    grid-template-columns: 1fr;
   }
 }

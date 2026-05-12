@@ -11,7 +11,7 @@
     <nav class="menu desktop-menu">
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
       <a routerLink="/about-kairos" routerLinkActive="active">About Kairos</a>
-      <a routerLink="/academy" routerLinkActive="active">Academy</a>
+      <a routerLink="/implementation" routerLinkActive="active">Implementation</a>
       <a routerLink="/training-example" routerLinkActive="active">Training Examples</a>
       <a routerLink="/learning-paths" routerLinkActive="active">Learning Paths</a>
       <a routerLink="/skill-matrix" routerLinkActive="active">Skill Matrix</a>
@@ -28,10 +28,10 @@
   <nav class="mobile-menu" [class.open]="menuOpen">
     <a routerLink="/" (click)="closeMenu()">Home</a>
     <a routerLink="/about-kairos" (click)="closeMenu()">About Kairos</a>
-    <a routerLink="/academy" (click)="closeMenu()">Academy</a>
+    <a routerLink="/implementation" (click)="closeMenu()">Implementation</a>
+    <a routerLink="/training-example" (click)="closeMenu()">Training Example</a>
     <a routerLink="/learning-paths" (click)="closeMenu()">Learning Paths</a>
     <a routerLink="/skill-matrix" (click)="closeMenu()">Skill Matrix</a>
-    <a routerLink="/rewards" (click)="closeMenu()">Rewards</a>
     <a routerLink="/kairoslingo" (click)="closeMenu()">Kairoslingo</a>
   </nav>
 </header>

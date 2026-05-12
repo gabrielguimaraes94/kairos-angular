@@ -28,9 +28,7 @@
       <aside class="sidebar">
         <div class="sidebar-title">Module Progress</div>
 
-        <div class="step"
-             *ngFor="let s of module.steps"
-             [ngClass]="s.status">
+        <div class="step" *ngFor="let s of module.steps" [ngClass]="s.status">
           <div class="step-status">
             <ng-container [ngSwitch]="s.status">
               <span *ngSwitchCase="'done'">✓</span>
@@ -68,13 +66,8 @@
             <div class="q">{{ i + 1 }}) {{ q.text }}</div>
 
             <label class="opt" *ngFor="let opt of q.options">
-              <input
-                type="radio"
-                [name]="q.id"
-                [checked]="answers[q.id] === opt.id"
-                (change)="selectAnswer(q.id, opt.id)"
-                [disabled]="submitted"
-              />
+              <input type="radio" [name]="q.id" [checked]="answers[q.id] === opt.id"
+                (change)="selectAnswer(q.id, opt.id)" [disabled]="submitted" />
               {{ opt.text }}
             </label>
 
@@ -89,7 +82,6 @@
             <button class="btn primary" (click)="submitQuiz()" [disabled]="submitted">
               Submit Quiz
             </button>
-            <button class="btn ghost">Save Progress</button>
           </div>
         </div>
         <div class="content-card" *ngIf="module.blocks.length > 0">
