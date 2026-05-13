@@ -292,17 +292,22 @@
   padding: 1rem;
 }
 
-.benefit-icon {
-  width: 42px;
-  height: 42px;
-  display: grid;
-  place-items: center;
-  border-radius: 14px;
-  background: #0054a6;
-  color: #ffffff;
+.benefit-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 86px;
+  height: 36px;
+  padding: 0 0.8rem;
+  border-radius: 999px;
+  background: rgba(0, 84, 166, 0.08);
+  color: #0054a6;
+  border: 1px solid rgba(0, 84, 166, 0.16);
+  font-size: 0.76rem;
   font-weight: 900;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   margin-bottom: 1rem;
-  box-shadow: 0 12px 24px rgba(0, 84, 166, 0.18);
 }
 
 .benefit-card h3 {
