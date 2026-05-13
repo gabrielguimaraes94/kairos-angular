@@ -21,7 +21,7 @@
 ========================= */
 
 .hero {
-    max-width: 900px;
+    max-width: 920px;
     margin-bottom: 2.5rem;
 }
 
@@ -47,7 +47,7 @@
     font-size: 1.08rem;
     line-height: 1.7;
     color: #536276;
-    max-width: 780px;
+    max-width: 800px;
 }
 
 /* =========================
@@ -123,9 +123,8 @@
    SHARED SECTIONS
 ========================= */
 
+.support-section,
 .roadmap-section,
-.training-model,
-.assumptions,
 .kpi-section {
     margin-top: 1rem;
     background: rgba(255, 255, 255, 0.72);
@@ -136,7 +135,7 @@
 }
 
 .section-header {
-    max-width: 820px;
+    max-width: 840px;
     margin-bottom: 1rem;
 }
 
@@ -150,6 +149,64 @@
 
 .section-header p {
     margin: 0.8rem 0 0;
+    color: #536276;
+    line-height: 1.7;
+    font-weight: 650;
+}
+
+/* =========================
+   PROBLEM / SOLUTION
+========================= */
+
+.support-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.support-card {
+    background: #ffffff;
+    border: 1px solid rgba(120, 138, 160, 0.18);
+    border-radius: 24px;
+    padding: 1.25rem;
+    box-shadow: 0 14px 30px rgba(18, 35, 56, 0.07);
+}
+
+.support-card.solution {
+    background:
+        radial-gradient(circle at top right, rgba(0, 84, 166, 0.08), transparent 18rem),
+        #ffffff;
+    border-color: rgba(0, 84, 166, 0.22);
+}
+
+.support-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 82px;
+    height: 34px;
+    padding: 0 0.75rem;
+    border-radius: 999px;
+    background: rgba(0, 84, 166, 0.08);
+    color: #0054a6;
+    border: 1px solid rgba(0, 84, 166, 0.16);
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.support-card h2 {
+    margin: 0 0 0.65rem;
+    color: #0b1727;
+    font-size: clamp(1.35rem, 2.4vw, 1.8rem);
+    line-height: 1.1;
+    letter-spacing: -0.04em;
+}
+
+.support-card p {
+    margin: 0;
     color: #536276;
     line-height: 1.7;
     font-weight: 650;
@@ -174,18 +231,14 @@
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.roadmap-card:hover {
+.roadmap-card:hover,
+.kpi-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 24px 55px rgba(18, 35, 56, 0.12);
     border-color: rgba(0, 84, 166, 0.26);
 }
 
-.roadmap-card.wide {
-    grid-column: span 4;
-}
-
 .phase-pill,
-.model-label,
 .kpi-label {
     display: inline-flex;
     align-items: center;
@@ -214,7 +267,6 @@
 }
 
 .roadmap-card h3,
-.model-card h3,
 .kpi-card h3 {
     margin: 0 0 0.55rem;
     color: #0b1727;
@@ -224,7 +276,6 @@
 }
 
 .roadmap-card p,
-.model-card p,
 .kpi-card p {
     margin: 0;
     color: #536276;
@@ -244,88 +295,166 @@
 }
 
 /* =========================
-   TRAINING MODEL
+   IMPLEMENTATION SUMMARY
 ========================= */
 
-.model-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-}
-
-.model-card {
-    background: #ffffff;
-    border: 1px solid rgba(120, 138, 160, 0.18);
-    border-radius: 24px;
+.implementation-summary {
+    margin-top: 1rem;
     padding: 1rem;
-    box-shadow: 0 14px 30px rgba(18, 35, 56, 0.07);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.model-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 24px 55px rgba(18, 35, 56, 0.12);
-    border-color: rgba(0, 84, 166, 0.26);
-}
-
-.model-value {
-    color: #0054a6;
-    font-weight: 900;
-    font-size: 2rem;
-    line-height: 1;
-    margin-bottom: 1rem;
-}
-
-/* =========================
-   ASSUMPTIONS
-========================= */
-
-.assumption-grid {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 1rem;
-}
-
-.assumption-card {
-    background: #ffffff;
+    border-radius: 20px;
+    background:
+        radial-gradient(circle at top right, rgba(0, 84, 166, 0.08), transparent 18rem),
+        rgba(248, 250, 252, 0.9);
     border: 1px solid rgba(120, 138, 160, 0.18);
-    border-radius: 24px;
-    padding: 1rem;
-    box-shadow: 0 14px 30px rgba(18, 35, 56, 0.07);
-    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.assumption-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 24px 55px rgba(18, 35, 56, 0.12);
-    border-color: rgba(0, 84, 166, 0.26);
-}
-
-.assumption-card span {
-    color: #67778d;
-    font-size: 0.78rem;
-    font-weight: 900;
-    display: block;
-    margin-bottom: 0.4rem;
-}
-
-.assumption-card strong {
-    display: block;
-    color: #0054a6;
-    font-size: 2rem;
-    line-height: 1;
-    margin-bottom: 0.7rem;
-}
-
-.assumption-card p {
-    margin: 0;
-    color: #536276;
-    line-height: 1.55;
+    color: #26384e;
+    line-height: 1.65;
     font-weight: 650;
 }
 
+.implementation-summary strong {
+    color: #0b1727;
+    font-weight: 900;
+}
+
 /* =========================
-   KPI
+   PLANNER
+========================= */
+
+.planner-section {
+    margin-top: 1rem;
+    background:
+        radial-gradient(circle at top right, rgba(0, 84, 166, 0.35), transparent 18rem),
+        #0b1727;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    padding: 1.5rem;
+    color: #ffffff;
+    box-shadow: 0 18px 45px rgba(18, 35, 56, 0.14);
+}
+
+.planner-content {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+.planner-section .kicker {
+    color: #93c5fd;
+}
+
+.planner-section h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.05em;
+}
+
+.planner-section p {
+    margin: 0.85rem 0 0;
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-weight: 650;
+}
+
+.planner-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.2rem;
+}
+
+.planner-benefits span {
+    display: inline-flex;
+    border-radius: 999px;
+    padding: 0.45rem 0.7rem;
+    background: rgba(255, 255, 255, 0.08);
+    color: #dbeafe;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+.planner-preview {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    overflow: hidden;
+}
+
+.planner-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.planner-top span {
+    color: #93c5fd;
+    font-weight: 900;
+    font-size: 0.8rem;
+}
+
+.planner-top strong {
+    color: #ffffff;
+    font-weight: 900;
+    text-align: right;
+}
+
+.planner-list {
+    display: grid;
+    gap: 0.75rem;
+    padding: 1rem;
+}
+
+.planner-item {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 0.75rem;
+    padding: 0.85rem;
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.planner-item span {
+    width: 12px;
+    height: 12px;
+    border-radius: 999px;
+    background: rgba(203, 213, 225, 0.55);
+    margin-top: 0.35rem;
+}
+
+.planner-item.done span {
+    background: #22c55e;
+}
+
+.planner-item.active {
+    background: rgba(255, 255, 255, 0.12);
+}
+
+.planner-item.active span {
+    background: #60a5fa;
+    box-shadow: 0 0 0 5px rgba(96, 165, 250, 0.14);
+}
+
+.planner-item strong {
+    display: block;
+    color: #ffffff;
+    font-weight: 900;
+    margin-bottom: 0.2rem;
+}
+
+.planner-item p {
+    margin: 0;
+    color: #cbd5e1;
+    line-height: 1.45;
+    font-size: 0.9rem;
+}
+
+/* =========================
+   WHAT KAIROS PROVIDES
 ========================= */
 
 .kpi-grid {
@@ -341,12 +470,6 @@
     padding: 1rem;
     box-shadow: 0 14px 30px rgba(18, 35, 56, 0.07);
     transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-}
-
-.kpi-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 24px 55px rgba(18, 35, 56, 0.12);
-    border-color: rgba(0, 84, 166, 0.26);
 }
 
 /* =========================
@@ -414,25 +537,23 @@
 @media (max-width: 1100px) {
 
     .roadmap-grid,
-    .assumption-grid,
     .kpi-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .roadmap-card.wide {
-        grid-column: span 2;
-    }
-
-    .model-grid {
-        grid-template-columns: 1fr;
-    }
-
+    .planner-content,
     .final-cta {
         grid-template-columns: 1fr;
     }
 
     .cta-actions {
         justify-content: flex-start;
+    }
+}
+
+@media (max-width: 760px) {
+    .support-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -449,9 +570,9 @@
         font-size: clamp(2.2rem, 11vw, 3.2rem);
     }
 
+    .support-section,
     .roadmap-section,
-    .training-model,
-    .assumptions,
+    .planner-section,
     .kpi-section,
     .final-cta {
         border-radius: 22px;
@@ -459,13 +580,8 @@
     }
 
     .roadmap-grid,
-    .assumption-grid,
     .kpi-grid {
         grid-template-columns: 1fr;
-    }
-
-    .roadmap-card.wide {
-        grid-column: auto;
     }
 
     .hero-actions,
